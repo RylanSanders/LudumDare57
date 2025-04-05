@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=12 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://c7nwkwi7i72f7" path="res://spear.gd" id="2_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://cbq6qsjvf7wcr" path="res://RoughSpear.png" id="2_r0du0"]
+[ext_resource type="Script" uid="uid://b5rdjagi8vq3o" path="res://launch_power_bar.gd" id="4_cm0pq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("1_uu6xs")
@@ -25,7 +26,18 @@ sources/0 = SubResource("TileSetAtlasSource_cm0pq")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uu6xs"]
 absorbent = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
+[sub_resource type="Gradient" id="Gradient_fos0i"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3dxm6"]
+gradient = SubResource("Gradient_fos0i")
+width = 75
+
+[sub_resource type="Gradient" id="Gradient_lgr22"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_trn2v"]
+gradient = SubResource("Gradient_lgr22")
+width = 75
 
 [node name="Node2D" type="Node2D"]
 
@@ -35,22 +47,33 @@ tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAA
 tile_set = SubResource("TileSet_fos0i")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(301, -220)
+position = Vector2(307, -256)
 physics_material_override = SubResource("PhysicsMaterial_uu6xs")
 gravity_scale = 0.1
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 20)
 script = ExtResource("2_cm0pq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("RectangleShape2D_3dxm6")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+position = Vector2(0, -5)
+polygon = PackedVector2Array(-1, -11, 4, -11, 4, 11, 8, 11, -2, 21, -8, 11, -2, 11)
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture_filter = 1
 texture = ExtResource("2_r0du0")
-metadata/_edit_lock_ = true
 
 [node name="Forward" type="Node2D" parent="RigidBody2D"]
 position = Vector2(-3.66, 24.785)
+
+[node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 215.0
+offset_top = -251.0
+offset_right = 290.0
+offset_bottom = -245.0
+value = 90.0
+texture_under = SubResource("GradientTexture1D_3dxm6")
+texture_progress = SubResource("GradientTexture1D_trn2v")
+texture_progress_offset = Vector2(0, 3.76)
+script = ExtResource("4_cm0pq")
