@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=24 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://c7nwkwi7i72f7" path="res://spear.gd" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://g83xcn768ybc" path="res://map_controller.gd" id="2_fos0i"]
 [ext_resource type="Texture2D" uid="uid://cbq6qsjvf7wcr" path="res://RoughSpear.png" id="2_r0du0"]
 [ext_resource type="Script" uid="uid://b5rdjagi8vq3o" path="res://launch_power_bar.gd" id="4_cm0pq"]
+[ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="4_lgr22"]
 [ext_resource type="PackedScene" uid="uid://cvdb0k0qqems" path="res://MapSection1.tscn" id="5_fos0i"]
+[ext_resource type="Texture2D" uid="uid://d1o8p02d4qq3v" path="res://WaterTile.png" id="5_trn2v"]
 
 [sub_resource type="Gradient" id="Gradient_fos0i"]
 
@@ -20,10 +22,13 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 gradient = SubResource("Gradient_lgr22")
 width = 75
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trn2v"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("1_uu6xs")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_trn2v")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 2:0/0 = 0
@@ -40,6 +45,17 @@ sources/0 = SubResource("TileSetAtlasSource_3dxm6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
 size = Vector2(326, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03owx"]
+shader = ExtResource("4_lgr22")
+shader_parameter/Speed = Vector2(0.02, 0.01)
+shader_parameter/WaterTexture = ExtResource("5_trn2v")
+shader_parameter/Alpha = 0.535
+
+[sub_resource type="Gradient" id="Gradient_ni1lh"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wkp8b"]
+gradient = SubResource("Gradient_ni1lh")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uu6xs"]
 absorbent = true
@@ -79,6 +95,12 @@ tile_set = SubResource("TileSet_fos0i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapController/StartingMap/WaterStartArea"]
 position = Vector2(96, -59)
 shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="WaterShader" type="Sprite2D" parent="MapController/StartingMap"]
+material = SubResource("ShaderMaterial_03owx")
+position = Vector2(96, -65)
+scale = Vector2(1.24219, 544)
+texture = SubResource("GradientTexture1D_wkp8b")
 
 [node name="Spear" type="RigidBody2D" parent="."]
 position = Vector2(307, -256)
