@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://8cohpgf4so2m"]
+
+[ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scenes/fish.gd" id="1_5uvof"]
+[ext_resource type="Texture2D" uid="uid://dod4pn44ee70f" path="res://Obstacles/Sprites/Fish1.png" id="2_5uvof"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ner4n"]
+radius = 3.0
+height = 34.0
+
+[node name="Fish" type="Area2D"]
+script = ExtResource("1_5uvof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ner4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_5uvof")
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

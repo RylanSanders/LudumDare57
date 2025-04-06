@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://cvdb0k0qqems"]
+[gd_scene load_steps=14 format=4 uid="uid://cvdb0k0qqems"]
 
+[ext_resource type="Script" uid="uid://bqfhe4a3mxxss" path="res://map_setup.gd" id="1_i03o3"]
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_s5bbg"]
 [ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="2_1o4wp"]
+[ext_resource type="PackedScene" uid="uid://8cohpgf4so2m" path="res://Obstacles/Scenes/Fish.tscn" id="2_d87u3"]
 [ext_resource type="Texture2D" uid="uid://d1o8p02d4qq3v" path="res://WaterTile.png" id="3_i03o3"]
+[ext_resource type="PackedScene" uid="uid://0twpn1yqktn4" path="res://Obstacles/Scenes/Plank.tscn" id="3_xkiw8"]
+[ext_resource type="PackedScene" uid="uid://bfo7w2drw72oe" path="res://Obstacles/Scenes/Seaweed.tscn" id="4_2n71d"]
+[ext_resource type="PackedScene" uid="uid://bjrxur31jqkba" path="res://Obstacles/Scenes/Rock.tscn" id="5_pgp00"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mwmuu"]
 texture = ExtResource("1_s5bbg")
@@ -34,6 +39,12 @@ shader_parameter/Alpha = 0.535
 gradient = SubResource("Gradient_1o4wp")
 
 [node name="MapSection1" type="Node2D"]
+script = ExtResource("1_i03o3")
+fish_scn = ExtResource("2_d87u3")
+plank_scn = ExtResource("3_xkiw8")
+seaweed_scn = ExtResource("4_2n71d")
+rock_scn = ExtResource("5_pgp00")
+rock_x_left = -52
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -45,3 +56,6 @@ material = SubResource("ShaderMaterial_xrskd")
 position = Vector2(96, -65)
 scale = Vector2(1.24219, 544)
 texture = SubResource("GradientTexture1D_qkot0")
+
+[node name="SpawnOffset" type="Node2D" parent="."]
+position = Vector2(-80, -64)

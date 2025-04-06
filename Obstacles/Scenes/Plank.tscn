@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://0twpn1yqktn4"]
+
+[ext_resource type="Script" uid="uid://mav1lbh3b1ok" path="res://Obstacles/Scenes/plank.gd" id="1_0eptu"]
+[ext_resource type="Texture2D" uid="uid://c4gkl68h4cqgh" path="res://Obstacles/Sprites/WoodPlank.png" id="2_nc2u7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhlqg"]
+size = Vector2(27, 27)
+
+[node name="Plank" type="Area2D"]
+script = ExtResource("1_0eptu")
+durability = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_xhlqg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_nc2u7")
+
+[connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]

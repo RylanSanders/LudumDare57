@@ -13,6 +13,8 @@ var UNDER_WATER_CONSTANT_UPWARDS_FORCE = -550
 @onready var RightNode:Node2D = get_node("Right")
 @onready var LaunchStrengthBar:TextureProgressBar = get_node("../LaunchStrengthProgressBar")
 
+
+
 func _process(delta: float) -> void:
 	if is_angling_launch:
 		if Input.is_key_pressed(KEY_A):
@@ -59,3 +61,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 	if area.name == "WaterStartArea":
 		constant_force.y = UNDER_WATER_CONSTANT_UPWARDS_FORCE
+
+
+var durabilityModifier = 1
+func hit_obstacle(params: obstacle_params):
+	apply_impulse(Vector2(0,-params.durability* durabilityModifier))
