@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var death_menu:PackedScene
+@export var pause_menu:PackedScene
 @onready var spear:Node2D = get_node("Spear")
 @onready var depth_label:Label = get_node("CanvasLayer/DepthLabel")
 @onready var high_score_label: Label = get_node("CanvasLayer/HighScoreLabel")
@@ -12,6 +13,8 @@ var SCORES_SECTION_VAR := "scores"
 var cnf_path:= "user://scores.ini"
 var current_high_score:=0.0
 var last_high_score:=0.0
+
+var last_pause_menu: PopupMenu
 
 func game_over():
 	get_tree().paused=true
@@ -61,3 +64,16 @@ func _process(delta: float) -> void:
 
 func calculate_depth() -> float:
 	return snappedf(spear.global_position.y, 0.01)
+
+func resume() -> void:
+	last_pause_menu.queue_free()
+	get_tree().paused=false
+
+func _on_pause_button_pressed() -> void:
+	get_tree().paused=true
+	last_pause_menu = pause_menu.instantiate()
+	last_pause_menu.GameController=self
+	add_child(last_pause_menu)
+	
+	last_pause_menu.popup_centered()
+	

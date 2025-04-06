@@ -62,7 +62,7 @@ offset_left = 239.0
 offset_top = 56.0
 offset_right = 593.2
 offset_bottom = 69.296
-text = "Speary the Diver"
+text = "Spear the Abyss"
 label_settings = SubResource("LabelSettings_t6syg")
 
 [node name="GridContainer" type="GridContainer" parent="MainMenu"]

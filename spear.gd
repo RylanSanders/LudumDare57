@@ -21,9 +21,9 @@ var game_over_timer=0
 
 func _process(delta: float) -> void:
 	if is_angling_launch:
-		if Input.is_key_pressed(KEY_A):
+		if Input.is_action_pressed("left"):
 			angular_vel=ANGULAR_ROT_SPEED
-		elif Input.is_key_pressed(KEY_D):
+		elif Input.is_action_pressed("right"):
 			angular_vel=-ANGULAR_ROT_SPEED
 		else:
 			angular_vel=0
@@ -57,11 +57,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if not is_angling_launch and not is_strength_launch:
 		var fake_gravity = (ForwardNode.global_position-global_position).normalized() * FAKE_GRAVITY
 		state.apply_force(fake_gravity)
-		if Input.is_key_pressed(KEY_A):
+		if Input.is_action_pressed("left"):
 			var left_vec = (LeftNode.global_position-global_position).normalized()
 			#state.apply_force(left_vec * TEMP_MOVE_FORCE)
 			state.angular_velocity = MOVE_ANGULAR_VEL
-		elif Input.is_key_pressed(KEY_D):
+		elif Input.is_action_pressed("right"):
 			var right_vec = (RightNode.global_position-global_position).normalized()
 			#state.apply_force(right_vec * TEMP_MOVE_FORCE)
 			state.angular_velocity = -MOVE_ANGULAR_VEL

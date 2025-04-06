@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=25 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://game_controller.gd" id="1_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_uu6xs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://g83xcn768ybc" path="res://map_controller.gd" id="2_fos0i"]
 [ext_resource type="Texture2D" uid="uid://cbq6qsjvf7wcr" path="res://RoughSpear.png" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://0m04bnj6k8lb" path="res://UI/DeathMenu.tscn" id="2_trn2v"]
+[ext_resource type="PackedScene" uid="uid://dejtk5e1g0laj" path="res://UI/PauseMenu.tscn" id="3_5vvyt"]
 [ext_resource type="Script" uid="uid://b5rdjagi8vq3o" path="res://launch_power_bar.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://cvdb0k0qqems" path="res://MapSection1.tscn" id="5_fos0i"]
 [ext_resource type="Texture2D" uid="uid://vnvgxqxup525" path="res://UI/saveGear.png" id="8_03owx"]
@@ -64,6 +65,7 @@ radius = 6.0
 texture_filter = 1
 script = ExtResource("1_lgr22")
 death_menu = ExtResource("2_trn2v")
+pause_menu = ExtResource("3_5vvyt")
 
 [node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="."]
 offset_left = 215.0
@@ -186,3 +188,4 @@ script = ExtResource("10_c6i3y")
 random_offset = Vector2(-340, 230)
 
 [connection signal="area_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_area_entered"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
