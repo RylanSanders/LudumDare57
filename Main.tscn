@@ -161,6 +161,14 @@ offset_bottom = 49.0
 theme_override_font_sizes/font_size = 50
 text = "Depth: "
 
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 360.0
+offset_top = 41.0
+offset_right = 503.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 30
+text = "High Score: "
+
 [node name="Knight" type="Sprite2D" parent="."]
 z_index = 2
 texture_filter = 1
