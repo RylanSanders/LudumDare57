@@ -153,6 +153,14 @@ grow_horizontal = 0
 icon = ExtResource("8_03owx")
 icon_alignment = 1
 
+[node name="DepthLabel" type="Label" parent="CanvasLayer"]
+offset_left = 375.0
+offset_top = -2.0
+offset_right = 512.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 50
+text = "Depth: "
+
 [node name="Knight" type="Sprite2D" parent="."]
 z_index = 2
 texture_filter = 1
