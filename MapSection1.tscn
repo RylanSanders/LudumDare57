@@ -40,6 +40,7 @@ gradient = SubResource("Gradient_1o4wp")
 
 [node name="MapSection1" type="Node2D"]
 script = ExtResource("1_i03o3")
+fish_prob = 0.3
 fish_scn = ExtResource("2_d87u3")
 plank_scn = ExtResource("3_xkiw8")
 seaweed_scn = ExtResource("4_2n71d")

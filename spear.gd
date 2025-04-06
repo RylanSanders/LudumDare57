@@ -4,8 +4,8 @@ var angular_vel: float =0
 var is_angling_launch:=true
 var is_strength_launch:=false
 var is_under_water:=false
-var LAUNCH_VEL = 100
-var GRAVITY_SCALE = 0.5
+var LAUNCH_VEL = 10
+var GRAVITY_SCALE = 0.2
 var ANGULAR_ROT_SPEED = 4
 var UNDER_WATER_CONSTANT_UPWARDS_FORCE = -550
 var GAME_OVER_TIME = 1
@@ -16,6 +16,7 @@ var game_over_timer=0
 @onready var RightNode:Node2D = get_node("Right")
 @onready var LaunchStrengthBar:TextureProgressBar = get_node("../LaunchStrengthProgressBar")
 @onready var GameController = get_node("..")
+@onready var Shop: shop = get_node("../Shop")
 
 @onready var BreathSound: AudioStreamPlayer = get_node("Audio/Breath")
 @onready var WaterSound: AudioStreamPlayer = get_node("Audio/Water")
@@ -36,7 +37,7 @@ func _process(delta: float) -> void:
 		elif is_strength_launch:
 			gravity_scale=GRAVITY_SCALE
 			is_strength_launch = false
-			var launch_vel = (ForwardNode.global_position-global_position).normalized() * LAUNCH_VEL * (LaunchStrengthBar.value/5)
+			var launch_vel = (ForwardNode.global_position-global_position).normalized() * LAUNCH_VEL * (LaunchStrengthBar.value/5)* (Shop.launch+1)
 			apply_impulse(launch_vel)
 			BreathSound.play()
 	if not is_angling_launch and not is_strength_launch and is_under_water and linear_velocity.y<1:
@@ -54,20 +55,22 @@ func _physics_process(delta: float) -> void:
 
 var TEMP_MOVE_FORCE := 200
 var FAKE_GRAVITY := 200
+var WEIGHT_AMPLIFIER := 30
 var MOVE_ANGULAR_VEL := 1
+var MAGIC_MODIFIER = 1
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	
 	if not is_angling_launch and not is_strength_launch:
-		var fake_gravity = (ForwardNode.global_position-global_position).normalized() * FAKE_GRAVITY
+		var fake_gravity = (ForwardNode.global_position-global_position).normalized() * FAKE_GRAVITY + (Vector2(0, 1)*(WEIGHT_AMPLIFIER * Shop.weight))
 		state.apply_force(fake_gravity)
 		if Input.is_action_pressed("left"):
 			var left_vec = (LeftNode.global_position-global_position).normalized()
 			#state.apply_force(left_vec * TEMP_MOVE_FORCE)
-			state.angular_velocity = MOVE_ANGULAR_VEL
+			state.angular_velocity = MOVE_ANGULAR_VEL * MAGIC_MODIFIER * (Shop.magic+1)
 		elif Input.is_action_pressed("right"):
 			var right_vec = (RightNode.global_position-global_position).normalized()
 			#state.apply_force(right_vec * TEMP_MOVE_FORCE)
-			state.angular_velocity = -MOVE_ANGULAR_VEL
+			state.angular_velocity = -MOVE_ANGULAR_VEL * MAGIC_MODIFIER * (Shop.magic+1)
 	
 
 
@@ -80,8 +83,10 @@ func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 		constant_force.y = UNDER_WATER_CONSTANT_UPWARDS_FORCE
 		is_under_water = true
 		WaterSound.play()
+		gravity_scale = GRAVITY_SCALE
 
 
 var durabilityModifier = 1
 func hit_obstacle(params: obstacle_params):
 	apply_impulse(Vector2(0,-params.durability* durabilityModifier))
+	GameController.add_gold(params.gold_value)

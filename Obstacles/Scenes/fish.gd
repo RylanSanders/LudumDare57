@@ -14,3 +14,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	is_going_right = not is_going_right
 	sprite.flip_h= not is_going_right
+
+func _on_obstacle_entered(area: Area2D) -> void:
+	super._on_obstacle_entered(area)
+	if area.name =="SpearTipArea":
+		queue_free()
