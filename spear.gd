@@ -17,6 +17,8 @@ var game_over_timer=0
 @onready var LaunchStrengthBar:TextureProgressBar = get_node("../LaunchStrengthProgressBar")
 @onready var GameController = get_node("..")
 
+@onready var BreathSound: AudioStreamPlayer = get_node("Audio/Breath")
+@onready var WaterSound: AudioStreamPlayer = get_node("Audio/Water")
 
 
 func _process(delta: float) -> void:
@@ -36,6 +38,7 @@ func _process(delta: float) -> void:
 			is_strength_launch = false
 			var launch_vel = (ForwardNode.global_position-global_position).normalized() * LAUNCH_VEL * (LaunchStrengthBar.value/5)
 			apply_impulse(launch_vel)
+			BreathSound.play()
 	if not is_angling_launch and not is_strength_launch and is_under_water and linear_velocity.y<1:
 		game_over_timer+=delta
 		if game_over_timer>GAME_OVER_TIME:
@@ -67,10 +70,16 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			state.angular_velocity = -MOVE_ANGULAR_VEL
 	
 
+
+func _ready() -> void:
+	BreathSound.volume_linear = AudioManger.sound_volumn
+	WaterSound.volume_linear = AudioManger.sound_volumn
+
 func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 	if area.name == "WaterStartArea":
 		constant_force.y = UNDER_WATER_CONSTANT_UPWARDS_FORCE
 		is_under_water = true
+		WaterSound.play()
 
 
 var durabilityModifier = 1

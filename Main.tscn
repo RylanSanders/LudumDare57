@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=27 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://game_controller.gd" id="1_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_uu6xs"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://b5rdjagi8vq3o" path="res://launch_power_bar.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://cvdb0k0qqems" path="res://MapSection1.tscn" id="5_fos0i"]
 [ext_resource type="Texture2D" uid="uid://vnvgxqxup525" path="res://UI/saveGear.png" id="8_03owx"]
+[ext_resource type="AudioStream" uid="uid://cpe3yxtmqn0qg" path="res://sounds/breath-[AudioTrimmer.com].mp3" id="10_c2ibq"]
 [ext_resource type="Script" uid="uid://drp248qd7btqs" path="res://knight_arm.gd" id="10_c6i3y"]
+[ext_resource type="AudioStream" uid="uid://1mkcguaba20d" path="res://sounds/water-[AudioTrimmer.com].mp3" id="11_j4qnp"]
 [ext_resource type="Texture2D" uid="uid://dcv07elj2lfo2" path="res://knight/knight.png" id="12_c2ibq"]
 
 [sub_resource type="Gradient" id="Gradient_fos0i"]
@@ -139,6 +141,14 @@ position = Vector2(-1, 9)
 shape = SubResource("CircleShape2D_3dxm6")
 
 [node name="Handle" type="Node2D" parent="Spear"]
+
+[node name="Audio" type="Node2D" parent="Spear"]
+
+[node name="Breath" type="AudioStreamPlayer" parent="Spear/Audio"]
+stream = ExtResource("10_c2ibq")
+
+[node name="Water" type="AudioStreamPlayer" parent="Spear/Audio"]
+stream = ExtResource("11_j4qnp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://rc4a3scm4icp"]
+
+[ext_resource type="Script" uid="uid://bqmofixe3j0wm" path="res://UI/options_menu.gd" id="1_8hkoq"]
+[ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="1_pkbii"]
+[ext_resource type="Texture2D" uid="uid://d1o8p02d4qq3v" path="res://WaterTile.png" id="2_8hkoq"]
+[ext_resource type="FontFile" uid="uid://c3jmcnkrd8u8r" path="res://UI/C&C Red Alert [INET].ttf" id="3_m0po5"]
+[ext_resource type="Theme" uid="uid://brjnprxl7p0gq" path="res://main_menu_theme.tres" id="4_7txfi"]
+
+[sub_resource type="Gradient" id="Gradient_t6syg"]
+colors = PackedColorArray(0, 0.380392, 1, 1, 0.000929164, 0.166303, 0.639802, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y6s48"]
+gradient = SubResource("Gradient_t6syg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otjfi"]
+shader = ExtResource("1_pkbii")
+shader_parameter/Speed = Vector2(0.03, 0.03)
+shader_parameter/WaterTexture = ExtResource("2_8hkoq")
+shader_parameter/Alpha = 0.3
+
+[sub_resource type="Gradient" id="Gradient_obtq6"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4ff4"]
+gradient = SubResource("Gradient_obtq6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6syg"]
+font = ExtResource("3_m0po5")
+font_size = 100
+font_color = Color(1, 1, 0, 1)
+outline_size = 10
+outline_color = Color(1, 0.0901961, 0, 1)
+shadow_size = 0
+
+[node name="Main" type="Node2D"]
+
+[node name="OptionsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hkoq")
+
+[node name="backgroundblue" type="Sprite2D" parent="OptionsMenu"]
+position = Vector2(575.5, 0)
+scale = Vector2(4.51172, 648)
+texture = SubResource("GradientTexture1D_y6s48")
+
+[node name="backgroundwater" type="Sprite2D" parent="OptionsMenu"]
+material = SubResource("ShaderMaterial_otjfi")
+position = Vector2(574.5, 0)
+scale = Vector2(4.48047, 643)
+texture = SubResource("GradientTexture1D_t4ff4")
+
+[node name="Title" type="Label" parent="OptionsMenu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.275
+anchor_bottom = 0.248
+offset_left = 239.0
+offset_top = 56.0
+offset_right = 593.2
+offset_bottom = 69.296
+text = "Options"
+label_settings = SubResource("LabelSettings_t6syg")
+
+[node name="GridContainer" type="GridContainer" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 400.66
+offset_top = 213.47
+offset_right = 751.66
+offset_bottom = 449.47
+
+[node name="Label" type="Label" parent="OptionsMenu/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sound Volume"
+
+[node name="SoundSlider" type="HSlider" parent="OptionsMenu/GridContainer"]
+layout_mode = 2
+max_value = 200.0
+value = 100.0
+
+[node name="Label2" type="Label" parent="OptionsMenu/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="OptionsMenu/GridContainer"]
+layout_mode = 2
+max_value = 200.0
+value = 100.0
+
+[node name="Label3" type="Label" parent="OptionsMenu/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="MainMenuButton" type="Button" parent="OptionsMenu/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_7txfi")
+theme_override_font_sizes/font_size = 75
+text = "Main Menu"
+
+[connection signal="value_changed" from="OptionsMenu/GridContainer/SoundSlider" to="OptionsMenu" method="_on_sound_slider_value_changed"]
+[connection signal="value_changed" from="OptionsMenu/GridContainer/MusicSlider" to="OptionsMenu" method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="OptionsMenu/GridContainer/MainMenuButton" to="OptionsMenu" method="_on_main_menu_button_pressed"]

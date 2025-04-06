@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjqi2kveqdgok"]
+[gd_scene load_steps=13 format=3 uid="uid://bjqi2kveqdgok"]
 
 [ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="1_b37jj"]
+[ext_resource type="Script" uid="uid://dvlae64y8md5t" path="res://UI/main_menu.gd" id="1_otjfi"]
 [ext_resource type="Texture2D" uid="uid://d1o8p02d4qq3v" path="res://WaterTile.png" id="2_8aown"]
 [ext_resource type="FontFile" uid="uid://c3jmcnkrd8u8r" path="res://UI/C&C Red Alert [INET].ttf" id="3_8aown"]
 [ext_resource type="Theme" uid="uid://brjnprxl7p0gq" path="res://main_menu_theme.tres" id="4_t6syg"]
@@ -40,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_otjfi")
 
 [node name="backgroundblue" type="Sprite2D" parent="MainMenu"]
 position = Vector2(575.5, 0)
@@ -93,3 +95,4 @@ text = "Options
 "
 
 [connection signal="pressed" from="MainMenu/GridContainer/PlayButton" to="MainMenu/GridContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="MainMenu/GridContainer/Options" to="MainMenu" method="_on_options_pressed"]
