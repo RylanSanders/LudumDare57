@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjqi2kveqdgok"]
+
+[ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="1_b37jj"]
+[ext_resource type="Texture2D" uid="uid://d1o8p02d4qq3v" path="res://WaterTile.png" id="2_8aown"]
+[ext_resource type="FontFile" uid="uid://c3jmcnkrd8u8r" path="res://UI/C&C Red Alert [INET].ttf" id="3_8aown"]
+[ext_resource type="Theme" uid="uid://brjnprxl7p0gq" path="res://main_menu_theme.tres" id="4_t6syg"]
+[ext_resource type="Script" uid="uid://sg8qx10cxq2f" path="res://UI/play_button.gd" id="5_y6s48"]
+
+[sub_resource type="Gradient" id="Gradient_t6syg"]
+colors = PackedColorArray(0, 0.380392, 1, 1, 0.000929164, 0.166303, 0.639802, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y6s48"]
+gradient = SubResource("Gradient_t6syg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otjfi"]
+shader = ExtResource("1_b37jj")
+shader_parameter/Speed = Vector2(0.03, 0.03)
+shader_parameter/WaterTexture = ExtResource("2_8aown")
+shader_parameter/Alpha = 0.3
+
+[sub_resource type="Gradient" id="Gradient_obtq6"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4ff4"]
+gradient = SubResource("Gradient_obtq6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6syg"]
+font = ExtResource("3_8aown")
+font_size = 100
+font_color = Color(1, 1, 0, 1)
+outline_size = 10
+outline_color = Color(1, 0.0901961, 0, 1)
+shadow_size = 0
+
+[node name="Main" type="Node2D"]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backgroundblue" type="Sprite2D" parent="MainMenu"]
+position = Vector2(575.5, 0)
+scale = Vector2(4.51172, 648)
+texture = SubResource("GradientTexture1D_y6s48")
+
+[node name="backgroundwater" type="Sprite2D" parent="MainMenu"]
+material = SubResource("ShaderMaterial_otjfi")
+position = Vector2(574.5, 0)
+scale = Vector2(4.48047, 643)
+texture = SubResource("GradientTexture1D_t4ff4")
+
+[node name="Title" type="Label" parent="MainMenu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.275
+anchor_bottom = 0.248
+offset_left = 239.0
+offset_top = 56.0
+offset_right = 593.2
+offset_bottom = 69.296
+text = "Speary the Diver"
+label_settings = SubResource("LabelSettings_t6syg")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu"]
+layout_mode = 0
+offset_left = 400.66
+offset_top = 213.47
+offset_right = 751.66
+offset_bottom = 449.47
+
+[node name="PlayButton" type="Button" parent="MainMenu/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_t6syg")
+theme_override_font_sizes/font_size = 75
+text = "Play Game"
+script = ExtResource("5_y6s48")
+
+[node name="InstructionsButton" type="Button" parent="MainMenu/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_t6syg")
+theme_override_font_sizes/font_size = 75
+text = "Instructions"
+
+[node name="Options" type="Button" parent="MainMenu/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_t6syg")
+theme_override_font_sizes/font_size = 75
+text = "Options
+"
+
+[connection signal="pressed" from="MainMenu/GridContainer/PlayButton" to="MainMenu/GridContainer/PlayButton" method="_on_pressed"]

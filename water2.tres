@@ -87,7 +87,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1190.98, -165.23)
 mode = 1
 flags/light_only = false
 preview_params/WaterTexture = "Resource(\"res://WaterTile.png\")"

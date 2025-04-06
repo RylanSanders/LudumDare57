@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Spear"
-run/main_scene="uid://c6kt75durlr23"
+run/main_scene="uid://bjqi2kveqdgok"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/custom_font="uid://c3jmcnkrd8u8r"
 
 [input]
 
