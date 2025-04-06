@@ -1,0 +1,173 @@
+[gd_scene load_steps=18 format=3 uid="uid://rc4a3scm4icp"]
+
+[ext_resource type="Script" uid="uid://kewvlvcy5si7" path="res://UI/instructions_menu.gd" id="1_7egw0"]
+[ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="2_7egw0"]
+[ext_resource type="Texture2D" uid="uid://d1o8p02d4qq3v" path="res://WaterTile.png" id="3_tm10p"]
+[ext_resource type="FontFile" uid="uid://c3jmcnkrd8u8r" path="res://UI/C&C Red Alert [INET].ttf" id="4_fctts"]
+[ext_resource type="Theme" uid="uid://brjnprxl7p0gq" path="res://main_menu_theme.tres" id="5_o4l3g"]
+[ext_resource type="Script" uid="uid://b5rdjagi8vq3o" path="res://launch_power_bar.gd" id="6_tm10p"]
+[ext_resource type="Texture2D" uid="uid://dod4pn44ee70f" path="res://Obstacles/Sprites/Fish1.png" id="7_tm10p"]
+
+[sub_resource type="Gradient" id="Gradient_t6syg"]
+colors = PackedColorArray(0, 0.380392, 1, 1, 0.000929164, 0.166303, 0.639802, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y6s48"]
+gradient = SubResource("Gradient_t6syg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otjfi"]
+shader = ExtResource("2_7egw0")
+shader_parameter/Speed = Vector2(0.03, 0.03)
+shader_parameter/WaterTexture = ExtResource("3_tm10p")
+shader_parameter/Alpha = 0.3
+
+[sub_resource type="Gradient" id="Gradient_obtq6"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4ff4"]
+gradient = SubResource("Gradient_obtq6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6syg"]
+font = ExtResource("4_fctts")
+font_size = 100
+font_color = Color(1, 1, 0, 1)
+outline_size = 10
+outline_color = Color(1, 0.0901961, 0, 1)
+shadow_size = 0
+
+[sub_resource type="Gradient" id="Gradient_fos0i"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m0po5"]
+gradient = SubResource("Gradient_fos0i")
+width = 75
+
+[sub_resource type="Gradient" id="Gradient_lgr22"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7txfi"]
+gradient = SubResource("Gradient_lgr22")
+width = 75
+
+[node name="Main" type="Node2D"]
+
+[node name="InstructionsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7egw0")
+
+[node name="backgroundblue" type="Sprite2D" parent="InstructionsMenu"]
+position = Vector2(575.5, 0)
+scale = Vector2(4.51172, 648)
+texture = SubResource("GradientTexture1D_y6s48")
+
+[node name="backgroundwater" type="Sprite2D" parent="InstructionsMenu"]
+material = SubResource("ShaderMaterial_otjfi")
+position = Vector2(574.5, 0)
+scale = Vector2(4.48047, 643)
+texture = SubResource("GradientTexture1D_t4ff4")
+
+[node name="Title" type="Label" parent="InstructionsMenu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.275
+anchor_bottom = 0.248
+offset_left = 114.0
+offset_top = 13.0
+offset_right = 582.0
+offset_bottom = 113.0
+text = "Instructions"
+label_settings = SubResource("LabelSettings_t6syg")
+
+[node name="Label" type="Label" parent="InstructionsMenu"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 104.0
+offset_right = 846.0
+offset_bottom = 155.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Throw your spear as deep as you can! "
+
+[node name="Label3" type="Label" parent="InstructionsMenu"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 359.0
+offset_right = 809.0
+offset_bottom = 464.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Hit fish to gain gold to buy upgrades. All other obstacles will slow you down"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="InstructionsMenu"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 154.0
+offset_right = 957.0
+offset_bottom = 475.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Use A/D or the Left/Right arrow keys to angle your spear, hit space once you've picked your angle. The second press of the space bar throws the spear. This bar shows how hard you will throw, try to get a full bar!"
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="InstructionsMenu"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 558.0
+offset_right = 774.385
+offset_bottom = 807.74
+
+[node name="MainMenuButton" type="Button" parent="InstructionsMenu/GridContainer"]
+layout_mode = 2
+theme = ExtResource("5_o4l3g")
+theme_override_font_sizes/font_size = 75
+text = "Main Menu"
+
+[node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="InstructionsMenu"]
+offset_left = 925.0
+offset_top = 337.0
+offset_right = 1019.0
+offset_bottom = 353.0
+value = 90.0
+texture_under = SubResource("GradientTexture1D_m0po5")
+texture_progress = SubResource("GradientTexture1D_7txfi")
+texture_progress_offset = Vector2(0, 3.76)
+script = ExtResource("6_tm10p")
+
+[node name="Fish1" type="Sprite2D" parent="InstructionsMenu"]
+position = Vector2(796, 429)
+texture = ExtResource("7_tm10p")
+
+[node name="Label4" type="Label" parent="InstructionsMenu"]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 448.0
+offset_right = 813.0
+offset_bottom = 502.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Magic = Better Left/Right Control
+Weight = increase speed of decent
+Launch Strength = throw harder"
+
+[node name="Label5" type="Label" parent="InstructionsMenu"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 478.0
+offset_right = 679.0
+offset_bottom = 577.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Upgrades"
+
+[connection signal="pressed" from="InstructionsMenu/GridContainer/MainMenuButton" to="InstructionsMenu" method="_on_main_menu_button_pressed"]

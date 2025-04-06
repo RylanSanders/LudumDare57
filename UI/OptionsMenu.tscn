@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://rc4a3scm4icp"]
+[gd_scene load_steps=12 format=3 uid="uid://774se1iox8bg"]
 
 [ext_resource type="Script" uid="uid://bqmofixe3j0wm" path="res://UI/options_menu.gd" id="1_8hkoq"]
 [ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="1_pkbii"]

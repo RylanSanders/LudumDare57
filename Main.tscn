@@ -19,17 +19,17 @@
 [ext_resource type="Script" uid="uid://dce4uhpowhrek" path="res://shop.gd" id="16_sc1dx"]
 [ext_resource type="PackedScene" uid="uid://8cohpgf4so2m" path="res://Obstacles/Scenes/Fish.tscn" id="18_kjvhd"]
 
-[sub_resource type="Gradient" id="Gradient_fos0i"]
+[sub_resource type="Gradient" id="Gradient_kjvhd"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3dxm6"]
-gradient = SubResource("Gradient_fos0i")
+gradient = SubResource("Gradient_kjvhd")
 width = 75
 
-[sub_resource type="Gradient" id="Gradient_lgr22"]
+[sub_resource type="Gradient" id="Gradient_5tuhn"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_trn2v"]
-gradient = SubResource("Gradient_lgr22")
+gradient = SubResource("Gradient_5tuhn")
 width = 75
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trn2v"]

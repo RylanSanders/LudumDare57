@@ -95,4 +95,5 @@ text = "Options
 "
 
 [connection signal="pressed" from="MainMenu/GridContainer/PlayButton" to="MainMenu/GridContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="MainMenu/GridContainer/InstructionsButton" to="MainMenu" method="_on_instructions_button_pressed"]
 [connection signal="pressed" from="MainMenu/GridContainer/Options" to="MainMenu" method="_on_options_pressed"]
