@@ -1,11 +1,14 @@
-[gd_scene load_steps=19 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=22 format=4 uid="uid://c6kt75durlr23"]
 
+[ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://game_controller.gd" id="1_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://c7nwkwi7i72f7" path="res://spear.gd" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://g83xcn768ybc" path="res://map_controller.gd" id="2_fos0i"]
 [ext_resource type="Texture2D" uid="uid://cbq6qsjvf7wcr" path="res://RoughSpear.png" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://0m04bnj6k8lb" path="res://UI/DeathMenu.tscn" id="2_trn2v"]
 [ext_resource type="Script" uid="uid://b5rdjagi8vq3o" path="res://launch_power_bar.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://cvdb0k0qqems" path="res://MapSection1.tscn" id="5_fos0i"]
+[ext_resource type="Texture2D" uid="uid://vnvgxqxup525" path="res://UI/saveGear.png" id="8_03owx"]
 
 [sub_resource type="Gradient" id="Gradient_fos0i"]
 
@@ -55,7 +58,9 @@ gradient = SubResource("Gradient_3dxm6")
 [sub_resource type="CircleShape2D" id="CircleShape2D_3dxm6"]
 radius = 6.0
 
-[node name="Node2D" type="Node2D"]
+[node name="GameController" type="Node2D"]
+script = ExtResource("1_lgr22")
+death_menu = ExtResource("2_trn2v")
 
 [node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="."]
 offset_left = 215.0
@@ -67,6 +72,8 @@ texture_under = SubResource("GradientTexture1D_3dxm6")
 texture_progress = SubResource("GradientTexture1D_trn2v")
 texture_progress_offset = Vector2(0, 3.76)
 script = ExtResource("4_cm0pq")
+
+[node name="MapSection1" parent="." instance=ExtResource("5_fos0i")]
 
 [node name="MapController" type="Node2D" parent="."]
 script = ExtResource("2_fos0i")
@@ -98,6 +105,8 @@ position = Vector2(0, -5)
 polygon = PackedVector2Array(-1, -11, 4, -11, 4, 11, 8, 11, -2, 21, -8, 11, -2, 11)
 
 [node name="Camera2D" type="Camera2D" parent="Spear"]
+offset = Vector2(-108.04, 0)
+zoom = Vector2(1.085, 1.085)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spear"]
 texture_filter = 1
@@ -123,6 +132,19 @@ position = Vector2(17.225, 0)
 position = Vector2(-1, 9)
 shape = SubResource("CircleShape2D_3dxm6")
 
-[node name="MapSection1" parent="." instance=ExtResource("5_fos0i")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 17.0
+offset_right = -25.0
+offset_bottom = 40.0
+grow_horizontal = 0
+icon = ExtResource("8_03owx")
+icon_alignment = 1
 
 [connection signal="area_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_area_entered"]

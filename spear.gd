@@ -3,15 +3,19 @@ extends RigidBody2D
 var angular_vel: float =0
 var is_angling_launch:=true
 var is_strength_launch:=false
+var is_under_water:=false
 var LAUNCH_VEL = 100
 var GRAVITY_SCALE = 0.5
 var ANGULAR_ROT_SPEED = 4
 var UNDER_WATER_CONSTANT_UPWARDS_FORCE = -550
+var GAME_OVER_TIME = 1
+var game_over_timer=0
 
 @onready var ForwardNode:Node2D = get_node("Forward")
 @onready var LeftNode:Node2D = get_node("Left")
 @onready var RightNode:Node2D = get_node("Right")
 @onready var LaunchStrengthBar:TextureProgressBar = get_node("../LaunchStrengthProgressBar")
+@onready var GameController = get_node("..")
 
 
 
@@ -32,6 +36,12 @@ func _process(delta: float) -> void:
 			is_strength_launch = false
 			var launch_vel = (ForwardNode.global_position-global_position).normalized() * LAUNCH_VEL * (LaunchStrengthBar.value/5)
 			apply_impulse(launch_vel)
+	if not is_angling_launch and not is_strength_launch and is_under_water and linear_velocity.y<1:
+		game_over_timer+=delta
+		if game_over_timer>GAME_OVER_TIME:
+			GameController.game_over()
+	else:
+		game_over_timer=0
 
 func _physics_process(delta: float) -> void:
 	if is_angling_launch or is_strength_launch:
@@ -57,10 +67,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			state.angular_velocity = -MOVE_ANGULAR_VEL
 	
 
-
 func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 	if area.name == "WaterStartArea":
 		constant_force.y = UNDER_WATER_CONSTANT_UPWARDS_FORCE
+		is_under_water = true
 
 
 var durabilityModifier = 1
