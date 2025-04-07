@@ -9,7 +9,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(music_node)
 	music_node.autoplay = true
-	var stream: AudioStreamWAV = AudioStreamWAV.load_from_file("res://sounds/testdepth.wav")
+	var stream: AudioStreamWAV = load("res://sounds/testdepth.wav")
 	stream.loop_end = 1992978
 	stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	music_node.stream = stream

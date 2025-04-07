@@ -227,6 +227,9 @@ offset_top = -228.0
 offset_right = -127.0
 offset_bottom = -204.0
 focus_mode = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
 text = "Buy"
 
 [node name="Label" type="Label" parent="Shop/Launch"]
@@ -253,10 +256,13 @@ position = Vector2(0, 28.675)
 
 [node name="WeightButton" type="Button" parent="Shop/Weight"]
 offset_left = -158.0
-offset_top = -228.0
-offset_right = -127.0
-offset_bottom = -204.0
+offset_top = -226.675
+offset_right = -121.0
+offset_bottom = -198.675
 focus_mode = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
 text = "Buy"
 
 [node name="Label" type="Label" parent="Shop/Weight"]
@@ -283,10 +289,13 @@ position = Vector2(0, 57.43)
 
 [node name="MagicButton" type="Button" parent="Shop/Magic"]
 offset_left = -158.0
-offset_top = -228.0
-offset_right = -127.0
-offset_bottom = -204.0
+offset_top = -224.43
+offset_right = -121.0
+offset_bottom = -196.43
 focus_mode = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
 text = "Buy"
 
 [node name="Label" type="Label" parent="Shop/Magic"]

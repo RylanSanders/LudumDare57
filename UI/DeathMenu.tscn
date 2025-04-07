@@ -1,35 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://0m04bnj6k8lb"]
+[gd_scene load_steps=3 format=3 uid="uid://0m04bnj6k8lb"]
 
 [ext_resource type="Script" uid="uid://d255dc8qfp7rw" path="res://UI/death_menu.gd" id="1_dbqb0"]
+[ext_resource type="LabelSettings" uid="uid://dgubixnxviygg" path="res://textsettings.tres" id="2_1hmi0"]
 
 [node name="DeathMenu" type="PopupMenu"]
 process_mode = 3
-size = Vector2i(170, 100)
+size = Vector2i(255, 100)
 visible = true
 unfocusable = true
 script = ExtResource("1_dbqb0")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 2.0
-offset_top = 4.0
-offset_right = 168.0
-offset_bottom = 58.0
+offset_left = 27.0
+offset_top = 5.0
+offset_right = 223.0
+offset_bottom = 104.0
 text = "That's as deep as you'll go!"
+label_settings = ExtResource("2_1hmi0")
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="RetryButton" type="MenuButton" parent="."]
-offset_left = 13.0
-offset_top = 45.0
-offset_right = 69.0
-offset_bottom = 95.0
+offset_left = 17.0
+offset_top = 48.0
+offset_right = 91.0
+offset_bottom = 98.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
 text = "Retry"
 
 [node name="MainMenuButton" type="MenuButton" parent="."]
-offset_left = 84.0
-offset_top = 51.0
-offset_right = 156.0
-offset_bottom = 91.0
+offset_left = 116.0
+offset_top = 54.0
+offset_right = 245.0
+offset_bottom = 94.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
 text = "Main Menu"
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
