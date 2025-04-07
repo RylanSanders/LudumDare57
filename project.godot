@@ -22,8 +22,7 @@ AudioManger="*res://sounds/audio_manger.gd"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
-window/stretch/scale_mode="integer"
+window/stretch/aspect="keep_width"
 
 [gui]
 
@@ -51,5 +50,8 @@ right={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
+2d/sdf/oversize=0

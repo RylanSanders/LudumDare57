@@ -6,6 +6,7 @@ var music_node: AudioStreamPlayer
 var sound_volumn:float = 1
 func _ready() -> void:
 	music_node = AudioStreamPlayer.new()
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(music_node)
 	music_node.autoplay = true
 	var stream: AudioStreamWAV = AudioStreamWAV.load_from_file("res://sounds/testdepth.wav")

@@ -26,7 +26,6 @@ func game_over():
 	get_tree().paused=true
 	var new_death_menu :PopupMenu = death_menu.instantiate()
 	record_high_score()
-	record_gold()
 	new_death_menu.GameController=self
 	add_child(new_death_menu)
 	
@@ -37,12 +36,9 @@ func record_high_score() -> void:
 	if current_high_score > last_high_score:
 		var conf := ConfigFile.new()
 		conf.set_value(SCORES_SECTION_VAR,HIGH_SCORE_VAR, current_high_score)
+		conf.set_value(GOLD_SECTION_VAR,GOLD_VAR, current_gold)
 		var error := conf.save(cnf_path)
 
-func record_gold() -> void:
-	var conf := ConfigFile.new()
-	conf.set_value(GOLD_SECTION_VAR,GOLD_VAR, current_gold)
-	var error := conf.save(cnf_path)
 
 func _ready() -> void:
 	get_saved_high_score()
@@ -73,7 +69,7 @@ func retry()  -> void:
 	
 
 func main_menu()  -> void:
-	record_gold()
+	record_high_score()
 	get_tree().paused=false
 	get_tree().change_scene_to_file("res://UI/MainMenu.tscn")
 

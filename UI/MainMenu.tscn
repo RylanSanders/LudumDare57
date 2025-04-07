@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjqi2kveqdgok"]
+[gd_scene load_steps=16 format=3 uid="uid://bjqi2kveqdgok"]
 
 [ext_resource type="Shader" uid="uid://dlhgmhis7wek" path="res://water2.tres" id="1_b37jj"]
 [ext_resource type="Script" uid="uid://dvlae64y8md5t" path="res://UI/main_menu.gd" id="1_otjfi"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://c3jmcnkrd8u8r" path="res://UI/C&C Red Alert [INET].ttf" id="3_8aown"]
 [ext_resource type="Theme" uid="uid://brjnprxl7p0gq" path="res://main_menu_theme.tres" id="4_t6syg"]
 [ext_resource type="Script" uid="uid://sg8qx10cxq2f" path="res://UI/play_button.gd" id="5_y6s48"]
+[ext_resource type="Texture2D" uid="uid://cbq6qsjvf7wcr" path="res://RoughSpear.png" id="7_w5vcv"]
+[ext_resource type="Texture2D" uid="uid://vkx6723msxl7" path="res://Obstacles/LeftEye.png" id="8_d2d4f"]
+[ext_resource type="Texture2D" uid="uid://cq4ovv7x75ji3" path="res://Obstacles/RightEye.png" id="9_6vw7e"]
 
 [sub_resource type="Gradient" id="Gradient_t6syg"]
 colors = PackedColorArray(0, 0.380392, 1, 1, 0.000929164, 0.166303, 0.639802, 1)
@@ -64,15 +67,15 @@ offset_left = 239.0
 offset_top = 56.0
 offset_right = 593.2
 offset_bottom = 69.296
-text = "Spear the Abyss"
+text = "Jerry The Spear"
 label_settings = SubResource("LabelSettings_t6syg")
 
 [node name="GridContainer" type="GridContainer" parent="MainMenu"]
 layout_mode = 0
 offset_left = 400.66
-offset_top = 213.47
+offset_top = 366.52
 offset_right = 751.66
-offset_bottom = 449.47
+offset_bottom = 602.52
 
 [node name="PlayButton" type="Button" parent="MainMenu/GridContainer"]
 layout_mode = 2
@@ -93,6 +96,27 @@ theme = ExtResource("4_t6syg")
 theme_override_font_sizes/font_size = 75
 text = "Options
 "
+
+[node name="RoughSpear" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(601, 262)
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("7_w5vcv")
+
+[node name="LeftEye" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(505, 258)
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("8_d2d4f")
+
+[node name="RightEye" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(516, 258)
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("9_6vw7e")
 
 [connection signal="pressed" from="MainMenu/GridContainer/PlayButton" to="MainMenu/GridContainer/PlayButton" method="_on_pressed"]
 [connection signal="pressed" from="MainMenu/GridContainer/InstructionsButton" to="MainMenu" method="_on_instructions_button_pressed"]

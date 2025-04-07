@@ -132,6 +132,7 @@ theme_override_font_sizes/font_size = 75
 text = "Main Menu"
 
 [node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="InstructionsMenu"]
+layout_mode = 0
 offset_left = 925.0
 offset_top = 337.0
 offset_right = 1019.0
