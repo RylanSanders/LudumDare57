@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=35 format=3 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://game_controller.gd" id="1_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_uu6xs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://g83xcn768ybc" path="res://map_controller.gd" id="2_fos0i"]
 [ext_resource type="Texture2D" uid="uid://cbq6qsjvf7wcr" path="res://RoughSpear.png" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://0m04bnj6k8lb" path="res://UI/DeathMenu.tscn" id="2_trn2v"]
+[ext_resource type="PackedScene" uid="uid://c1du07q4k75us" path="res://UI/OutOfBoundsDeathMenu.tscn" id="3_3b0ty"]
 [ext_resource type="PackedScene" uid="uid://dejtk5e1g0laj" path="res://UI/PauseMenu.tscn" id="3_5vvyt"]
 [ext_resource type="Script" uid="uid://b5rdjagi8vq3o" path="res://launch_power_bar.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://cvdb0k0qqems" path="res://MapSection1.tscn" id="5_fos0i"]
@@ -34,6 +35,12 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_trn2v"]
 gradient = SubResource("Gradient_5tuhn")
 width = 75
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_devvj"]
+size = Vector2(33, 431)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b0ty"]
+size = Vector2(653, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trn2v"]
 
@@ -69,6 +76,7 @@ radius = 8.0
 texture_filter = 1
 script = ExtResource("1_lgr22")
 death_menu = ExtResource("2_trn2v")
+out_of_bounds_death_menu = ExtResource("3_3b0ty")
 pause_menu = ExtResource("3_5vvyt")
 
 [node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="."]
@@ -84,6 +92,24 @@ texture_progress_offset = Vector2(0, 2.32)
 script = ExtResource("4_cm0pq")
 
 [node name="MapSection1" parent="." instance=ExtResource("5_fos0i")]
+
+[node name="bound1" type="Area2D" parent="MapSection1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSection1/bound1"]
+position = Vector2(294.5, -277.5)
+shape = SubResource("RectangleShape2D_devvj")
+
+[node name="bound2" type="Area2D" parent="MapSection1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSection1/bound2"]
+position = Vector2(-326, -279)
+shape = SubResource("RectangleShape2D_devvj")
+
+[node name="bound3" type="Area2D" parent="MapSection1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSection1/bound3"]
+position = Vector2(-16.5, -489)
+shape = SubResource("RectangleShape2D_3b0ty")
 
 [node name="MapController" type="Node2D" parent="."]
 script = ExtResource("2_fos0i")

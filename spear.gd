@@ -84,6 +84,8 @@ func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 		is_under_water = true
 		WaterSound.play()
 		gravity_scale = GRAVITY_SCALE
+	if area.name.begins_with("bound"):
+		GameController.out_of_bounds()
 
 
 var durabilityModifier = 1

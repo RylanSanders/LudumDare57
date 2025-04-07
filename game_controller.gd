@@ -3,6 +3,7 @@ extends Node2D
 class_name game_controller
 
 @export var death_menu:PackedScene
+@export var out_of_bounds_death_menu:PackedScene
 @export var pause_menu:PackedScene
 @onready var spear:Node2D = get_node("Spear")
 @onready var depth_label:Label = get_node("CanvasLayer/DepthLabel")
@@ -25,6 +26,15 @@ var last_pause_menu: PopupMenu
 func game_over():
 	get_tree().paused=true
 	var new_death_menu :PopupMenu = death_menu.instantiate()
+	record_high_score()
+	new_death_menu.GameController=self
+	add_child(new_death_menu)
+	
+	new_death_menu.popup_centered()
+
+func out_of_bounds():
+	get_tree().paused=true
+	var new_death_menu :PopupMenu = out_of_bounds_death_menu.instantiate()
 	record_high_score()
 	new_death_menu.GameController=self
 	add_child(new_death_menu)

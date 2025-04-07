@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1du07q4k75us"]
+
+[ext_resource type="Script" uid="uid://d255dc8qfp7rw" path="res://UI/death_menu.gd" id="1_qs2ei"]
+[ext_resource type="LabelSettings" uid="uid://dgubixnxviygg" path="res://textsettings.tres" id="2_0yuem"]
+[ext_resource type="Texture2D" uid="uid://lqh4umte2k3s" path="res://Obstacles/Sprites/Icon.png" id="3_0yuem"]
+
+[node name="DeathMenu" type="PopupMenu"]
+process_mode = 3
+size = Vector2i(270, 100)
+visible = true
+unfocusable = true
+script = ExtResource("1_qs2ei")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 3.0
+offset_right = 272.0
+offset_bottom = 102.0
+text = "Where do you think you're going!"
+label_settings = ExtResource("2_0yuem")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="RetryButton" type="MenuButton" parent="."]
+offset_left = 17.0
+offset_top = 48.0
+offset_right = 91.0
+offset_bottom = 98.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Retry"
+
+[node name="MainMenuButton" type="MenuButton" parent="."]
+offset_left = 116.0
+offset_top = 54.0
+offset_right = 245.0
+offset_bottom = 94.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(26, 30)
+scale = Vector2(2.8125, 3.36667)
+texture = ExtResource("3_0yuem")
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
