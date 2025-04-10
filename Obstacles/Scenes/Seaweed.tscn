@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfo7w2drw72oe"]
+[gd_scene load_steps=5 format=3 uid="uid://bfo7w2drw72oe"]
 
 [ext_resource type="Script" uid="uid://tonltsty3gad" path="res://Obstacles/Scenes/seaweed.gd" id="1_8i82p"]
 [ext_resource type="Texture2D" uid="uid://bgcknr7j6sgx1" path="res://Obstacles/Sprites/seaweed.png" id="2_fk0s8"]
+[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/ShardEmitter.tscn" id="3_fk0s8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhlqg"]
 size = Vector2(27, 27)
@@ -17,5 +18,7 @@ shape = SubResource("RectangleShape2D_xhlqg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_fk0s8")
+
+[node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_fk0s8")]
 
 [connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]
