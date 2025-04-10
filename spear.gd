@@ -10,6 +10,7 @@ var ANGULAR_ROT_SPEED = 4
 var UNDER_WATER_CONSTANT_UPWARDS_FORCE = -550
 var GAME_OVER_TIME = 1
 var game_over_timer=0
+var is_stuck:= false
 
 @onready var ForwardNode:Node2D = get_node("Forward")
 @onready var LeftNode:Node2D = get_node("Left")
@@ -71,6 +72,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			var right_vec = (RightNode.global_position-global_position).normalized()
 			#state.apply_force(right_vec * TEMP_MOVE_FORCE)
 			state.angular_velocity = -MOVE_ANGULAR_VEL * MAGIC_MODIFIER * (Shop.magic+1)
+	if is_stuck:
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0
 	
 
 
@@ -89,6 +93,17 @@ func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 
 
 var durabilityModifier = 1
-func hit_obstacle(params: obstacle_params):
+#For now this is going to return true if the ostacle isbroken and false otherwise
+func hit_obstacle(params: obstacle_params) -> bool:
 	apply_impulse(Vector2(0,-params.durability* durabilityModifier))
 	GameController.add_gold(params.gold_value)
+	if not does_spear_break_through(params):
+		is_stuck = true
+		return false
+	return true
+
+var LENGTH_MULTIPLER := 0.1
+func does_spear_break_through(params:obstacle_params) -> bool:
+	if linear_velocity.length() * LENGTH_MULTIPLER > params.durability:
+		return true
+	return false

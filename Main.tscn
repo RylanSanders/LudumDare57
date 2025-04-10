@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=36 format=3 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://game_controller.gd" id="1_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dcn3hd50jypr0" path="res://BaseTileSet.png" id="1_uu6xs"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://dce4uhpowhrek" path="res://shop.gd" id="16_sc1dx"]
 [ext_resource type="LabelSettings" uid="uid://dgubixnxviygg" path="res://textsettings.tres" id="17_5tuhn"]
 [ext_resource type="PackedScene" uid="uid://8cohpgf4so2m" path="res://Obstacles/Scenes/Fish.tscn" id="18_kjvhd"]
+[ext_resource type="PackedScene" uid="uid://0twpn1yqktn4" path="res://Obstacles/Scenes/Plank.tscn" id="23_bg4s2"]
 
 [sub_resource type="Gradient" id="Gradient_kjvhd"]
 
@@ -359,6 +360,30 @@ texture = ExtResource("16_fpfj3")
 
 [node name="Fish" parent="." instance=ExtResource("18_kjvhd")]
 position = Vector2(-267, -33)
+
+[node name="Plank" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-268, -12)
+
+[node name="Plank2" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-234, -12)
+
+[node name="Plank3" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-203, -12)
+
+[node name="Plank4" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-167, -10)
+
+[node name="Plank5" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-127, -9)
+
+[node name="Plank6" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-90, -8)
+
+[node name="Plank7" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-53, -8)
+
+[node name="Plank8" parent="." instance=ExtResource("23_bg4s2")]
+position = Vector2(-18, -7)
 
 [connection signal="area_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_area_entered"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]

@@ -113,7 +113,3 @@ func add_gold(num: int):
 func remove_gold(num:int):
 	current_gold -= num
 	gold_label.text = str(current_gold)
-
-
-func _on_magic_button_pressed() -> void:
-	pass # Replace with function body.
