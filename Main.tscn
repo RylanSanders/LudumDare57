@@ -386,6 +386,7 @@ position = Vector2(-53, -8)
 position = Vector2(-18, -7)
 
 [connection signal="area_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_area_entered"]
+[connection signal="body_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_body_entered"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Shop/Launch/LaunchStrengthButton" to="Shop" method="_on_launch_strength_button_pressed"]
 [connection signal="pressed" from="Shop/Weight/WeightButton" to="Shop" method="_on_weight_button_pressed"]

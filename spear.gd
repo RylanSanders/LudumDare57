@@ -91,6 +91,12 @@ func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 	if area.name.begins_with("bound"):
 		GameController.out_of_bounds()
 
+var MIN_WALL_BOUNCE_VEL := 20.0
+func _on_spear_tip_area_body_entered(body: Node2D) -> void:
+	if body.name == "TileMapLayer":
+		print(str(linear_velocity.length()))
+		if linear_velocity.length() < MIN_WALL_BOUNCE_VEL:
+			is_stuck = true
 
 var durabilityModifier = 1
 #For now this is going to return true if the ostacle isbroken and false otherwise
