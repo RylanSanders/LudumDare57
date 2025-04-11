@@ -13,4 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	is_going_right = not is_going_right
-	sprite.flip_h= not is_going_right
+	#Needed for if the sprite gets destroyed and it hits a wall
+	if sprite != null:
+		sprite.flip_h= not is_going_right

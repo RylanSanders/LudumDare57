@@ -5,10 +5,12 @@ class_name game_controller
 @export var death_menu:PackedScene
 @export var out_of_bounds_death_menu:PackedScene
 @export var pause_menu:PackedScene
+@export var show_num_objs: bool = false
 @onready var spear:Node2D = get_node("Spear")
 @onready var depth_label:Label = get_node("CanvasLayer/DepthLabel")
 @onready var high_score_label: Label = get_node("CanvasLayer/HighScoreLabel")
 @onready var gold_label: Label = get_node("CanvasLayer/GoldLabel")
+@onready var num_objs_label:Label = get_node("CanvasLayer/NumObjectsLabel")
 
 var DEPTH_LABEL := "DEPTH: "
 var HIGH_SCORE_LABEL := "HIGH SCORE: "
@@ -20,6 +22,9 @@ var cnf_path:= "user://scores.ini"
 var current_high_score:=0.0
 var last_high_score:=0.0
 var current_gold := 0
+
+var show_objs_timer :=0.0
+var SHOW_OBJS_REFRESH_RATE = 2
 
 var last_pause_menu: PopupMenu
 
@@ -43,16 +48,19 @@ func out_of_bounds():
 
 func record_high_score() -> void:
 	var new_score = calculate_depth()
+	
+	var conf := ConfigFile.new()
 	if current_high_score > last_high_score:
-		var conf := ConfigFile.new()
 		conf.set_value(SCORES_SECTION_VAR,HIGH_SCORE_VAR, current_high_score)
-		conf.set_value(GOLD_SECTION_VAR,GOLD_VAR, current_gold)
-		var error := conf.save(cnf_path)
+	conf.set_value(GOLD_SECTION_VAR,GOLD_VAR, current_gold)
+	var error := conf.save(cnf_path)
 
 
 func _ready() -> void:
 	get_saved_high_score()
 	get_saved_gold()
+	if not show_num_objs:
+		num_objs_label.queue_free()
 
 func get_saved_high_score():
 	var conf := ConfigFile.new()
@@ -88,7 +96,17 @@ func _process(delta: float) -> void:
 	depth_label.text = DEPTH_LABEL + str(depth)
 	if depth>current_high_score:
 		current_high_score = depth
-	
+	if show_num_objs:
+		show_objs_timer += delta
+		if show_objs_timer> SHOW_OBJS_REFRESH_RATE:
+			show_objs_timer=0
+			num_objs_label.text = "Num Objects: " + str(rec_count_nodes(get_tree().root))
+
+func rec_count_nodes(node: Node)->int:
+	var sum:=1
+	for child in node.get_children():
+		sum+=rec_count_nodes(child)
+	return sum
 
 func calculate_depth() -> float:
 	return snappedf(spear.global_position.y, 0.01)

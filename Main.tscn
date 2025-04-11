@@ -79,6 +79,7 @@ script = ExtResource("1_lgr22")
 death_menu = ExtResource("2_trn2v")
 out_of_bounds_death_menu = ExtResource("3_3b0ty")
 pause_menu = ExtResource("3_5vvyt")
+show_num_objs = true
 
 [node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -28.0
@@ -226,6 +227,14 @@ offset_top = 15.0
 offset_right = 125.0
 offset_bottom = 46.0
 theme_override_font_sizes/font_size = 30
+
+[node name="NumObjectsLabel" type="Label" parent="CanvasLayer"]
+offset_left = 159.0
+offset_top = 6.0
+offset_right = 401.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 30
+text = "Num Objects"
 
 [node name="Knight" type="Sprite2D" parent="."]
 z_index = 2
