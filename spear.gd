@@ -92,11 +92,16 @@ func _on_spear_tip_area_area_entered(area: Area2D) -> void:
 		GameController.out_of_bounds()
 
 var MIN_WALL_BOUNCE_VEL := 20.0
+var SPEAR_WALL_BOUNCE := 2
+var MAX_SPEAR_BOUNCE_VEL := 400.0
 func _on_spear_tip_area_body_entered(body: Node2D) -> void:
 	if body.name == "TileMapLayer":
-		print(str(linear_velocity.length()))
 		if linear_velocity.length() < MIN_WALL_BOUNCE_VEL:
 			is_stuck = true
+		else:
+			var dir: float = linear_velocity.x/abs(linear_velocity.x)
+			var bounce_x_vel: float = min(SPEAR_WALL_BOUNCE * linear_velocity.length(), MAX_SPEAR_BOUNCE_VEL)
+			apply_impulse(Vector2(bounce_x_vel * -dir, 0))
 
 var durabilityModifier = 1
 #For now this is going to return true if the ostacle isbroken and false otherwise
