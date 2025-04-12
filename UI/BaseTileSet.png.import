@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dafvktekempma"
-path="res://.godot/imported/BaseTileSet.png-ef06e98f7ec0f9779f11e350fa04eb32.ctex"
+uid="uid://b717hmc0sv34l"
+path="res://.godot/imported/BaseTileSet.png-5ccc2960cfb08facb839e24343331593.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BaseTileSet.png"
-dest_files=["res://.godot/imported/BaseTileSet.png-ef06e98f7ec0f9779f11e350fa04eb32.ctex"]
+source_file="res://UI/BaseTileSet.png"
+dest_files=["res://.godot/imported/BaseTileSet.png-5ccc2960cfb08facb839e24343331593.ctex"]
 
 [params]
 
