@@ -7,10 +7,16 @@ var MAP_SECTIONS_TO_KEEP_LOADED := 10
 var old_map_sections_checker_timer := 0.0
 var OLD_MAP_SECTIONS_CHECKER_TIME := 4.0
 
-var newMapPosition := 544
+var num_maps_generated:=0
+var seed:=0.0
+
+var newMapPosition := 0
 
 @export var map_section_1:PackedScene
 @onready var spear: RigidBody2D = get_node("../Spear")
+
+func _ready() -> void:
+	seed = randf_range(-100,100)
 
 func _process(delta: float) -> void:
 	if spear.global_position.y>newMapPosition-(MAP_SECTION_HEIGHT*MAP_SECTION_DIST_TO_GENERATE):
@@ -23,7 +29,10 @@ func _process(delta: float) -> void:
 				child.queue_free()
 
 func generate_map_section():
+	
 	var d:Node2D = map_section_1.instantiate()
+	d.setup(num_maps_generated, seed)
 	d.position.y = newMapPosition
 	newMapPosition += MAP_SECTION_HEIGHT
 	add_child(d)
+	num_maps_generated+=1
