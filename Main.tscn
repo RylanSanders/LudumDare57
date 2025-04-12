@@ -46,6 +46,12 @@ sources/0 = SubResource("TileSetAtlasSource_3dxm6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
 size = Vector2(548, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_devvj"]
+size = Vector2(33, 431)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b0ty"]
+size = Vector2(653, 20)
+
 [sub_resource type="Gradient" id="Gradient_kjvhd"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3dxm6"]
@@ -58,12 +64,6 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_trn2v"]
 gradient = SubResource("Gradient_5tuhn")
 width = 75
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_devvj"]
-size = Vector2(33, 431)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b0ty"]
-size = Vector2(653, 20)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uu6xs"]
 absorbent = true
@@ -94,6 +94,24 @@ tile_set = SubResource("TileSet_fos0i")
 position = Vector2(-15, -55)
 shape = SubResource("RectangleShape2D_3dxm6")
 
+[node name="bound1" type="Area2D" parent="MapController/StartingMap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapController/StartingMap/bound1"]
+position = Vector2(294.5, -277.5)
+shape = SubResource("RectangleShape2D_devvj")
+
+[node name="bound2" type="Area2D" parent="MapController/StartingMap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapController/StartingMap/bound2"]
+position = Vector2(-326, -279)
+shape = SubResource("RectangleShape2D_devvj")
+
+[node name="bound3" type="Area2D" parent="MapController/StartingMap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapController/StartingMap/bound3"]
+position = Vector2(-16.5, -489)
+shape = SubResource("RectangleShape2D_3b0ty")
+
 [node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -28.0
 offset_top = -236.0
@@ -105,27 +123,6 @@ texture_under = SubResource("GradientTexture1D_3dxm6")
 texture_progress = SubResource("GradientTexture1D_trn2v")
 texture_progress_offset = Vector2(0, 2.32)
 script = ExtResource("4_cm0pq")
-
-[node name="MapSection1" parent="." instance=ExtResource("5_fos0i")]
-visible = false
-
-[node name="bound1" type="Area2D" parent="MapSection1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSection1/bound1"]
-position = Vector2(294.5, -277.5)
-shape = SubResource("RectangleShape2D_devvj")
-
-[node name="bound2" type="Area2D" parent="MapSection1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSection1/bound2"]
-position = Vector2(-326, -279)
-shape = SubResource("RectangleShape2D_devvj")
-
-[node name="bound3" type="Area2D" parent="MapSection1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSection1/bound3"]
-position = Vector2(-16.5, -489)
-shape = SubResource("RectangleShape2D_3b0ty")
 
 [node name="Spear" type="RigidBody2D" parent="."]
 z_index = 3

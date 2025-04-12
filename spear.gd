@@ -95,6 +95,7 @@ var MIN_WALL_BOUNCE_VEL := 20.0
 var SPEAR_WALL_BOUNCE := 2
 var MAX_SPEAR_BOUNCE_VEL := 400.0
 func _on_spear_tip_area_body_entered(body: Node2D) -> void:
+	print(body.name)
 	if body.name == "TileMapLayer":
 		if linear_velocity.length() < MIN_WALL_BOUNCE_VEL:
 			is_stuck = true
