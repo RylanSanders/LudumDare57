@@ -1,12 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://8cohpgf4so2m"]
+[gd_scene load_steps=12 format=3 uid="uid://8cohpgf4so2m"]
 
 [ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scenes/fish.gd" id="1_5uvof"]
-[ext_resource type="Texture2D" uid="uid://dod4pn44ee70f" path="res://Obstacles/Sprites/Fish1.png" id="2_5uvof"]
+[ext_resource type="Texture2D" uid="uid://c2dosey72g268" path="res://Obstacles/Sprites/GoodFish1.png" id="2_ner4n"]
 [ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/ShardEmitter.tscn" id="3_ner4n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ner4n"]
 radius = 3.0
 height = 34.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olema"]
+atlas = ExtResource("2_ner4n")
+region = Rect2(0, 0, 45, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tphrv"]
+atlas = ExtResource("2_ner4n")
+region = Rect2(45, 0, 45, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb0l4"]
+atlas = ExtResource("2_ner4n")
+region = Rect2(90, 0, 45, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsjye"]
+atlas = ExtResource("2_ner4n")
+region = Rect2(135, 0, 45, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apfuy"]
+atlas = ExtResource("2_ner4n")
+region = Rect2(180, 0, 45, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gigbf"]
+atlas = ExtResource("2_ner4n")
+region = Rect2(225, 0, 45, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rv2sb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olema")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tphrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb0l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsjye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apfuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gigbf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Fish" type="Area2D"]
 script = ExtResource("1_5uvof")
@@ -17,9 +67,11 @@ position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ner4n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_5uvof")
+sprite_frames = SubResource("SpriteFrames_rv2sb")
+autoplay = "default"
+frame_progress = 0.291638
 metadata/_edit_lock_ = true
 
 [node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_ner4n")]

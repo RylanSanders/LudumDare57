@@ -5,7 +5,8 @@ var is_going_right:=true
 var timer := 0.0
 var VERTICAL_SPEED_MULTIPLIER :=3.0
 
-@onready var sprite:Sprite2D = get_node("Sprite2D")
+@onready var sprite:AnimatedSprite2D = get_node("Sprite2D")
+
 
 func _process(delta: float) -> void:
 	if is_going_right:
