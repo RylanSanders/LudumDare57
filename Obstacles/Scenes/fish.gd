@@ -1,9 +1,9 @@
 extends obstacle_base
 
-var SPEED :=200
+@export var SPEED :=200
 var is_going_right:=true
 var timer := 0.0
-var VERTICAL_SPEED_MULTIPLIER :=3.0
+@export var VERTICAL_SPEED_MULTIPLIER :=3.0
 
 @onready var sprite:AnimatedSprite2D = get_node("Sprite2D")
 

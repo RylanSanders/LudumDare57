@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://cca2mu1t2iurh"]
+
+[ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scenes/fish.gd" id="1_6p20w"]
+[ext_resource type="Texture2D" uid="uid://2v1ffoy5jobe" path="res://Obstacles/Sprites/GoodFish2.png" id="2_6p20w"]
+[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/ShardEmitter.tscn" id="3_w1raa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ner4n"]
+radius = 3.0
+height = 34.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4o3t"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(0, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1raa"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(90, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnu3i"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(180, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krklk"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(270, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avu7e"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(360, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wguf7"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(450, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei0pl"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(540, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q5kf"]
+atlas = ExtResource("2_6p20w")
+region = Rect2(630, 0, 90, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rv2sb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4o3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1raa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnu3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krklk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avu7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wguf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei0pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q5kf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="BigFish" type="Area2D"]
+script = ExtResource("1_6p20w")
+SPEED = 50
+VERTICAL_SPEED_MULTIPLIER = 1.0
+durability = 100.0
+gold_value = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ner4n")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rv2sb")
+autoplay = "default"
+frame_progress = 0.415026
+metadata/_edit_lock_ = true
+
+[node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_w1raa")]
+
+[connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
