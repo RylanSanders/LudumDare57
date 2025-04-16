@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmx60rbdenwyp"]
+
+[ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scenes/fish.gd" id="1_gdvse"]
+[ext_resource type="Texture2D" uid="uid://m7mnexj2wdya" path="res://Obstacles/Sprites/GoodFish3.png" id="2_gdvse"]
+[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/ShardEmitter.tscn" id="3_rhc1h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ner4n"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foj5i"]
+atlas = ExtResource("2_gdvse")
+region = Rect2(0, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhc1h"]
+atlas = ExtResource("2_gdvse")
+region = Rect2(19, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s86ws"]
+atlas = ExtResource("2_gdvse")
+region = Rect2(38, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m5w2"]
+atlas = ExtResource("2_gdvse")
+region = Rect2(57, 0, 19, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rv2sb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foj5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhc1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s86ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m5w2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Fish" type="Area2D"]
+script = ExtResource("1_gdvse")
+SPEED = 150
+VERTICAL_SPEED_MULTIPLIER = 2.0
+durability = 5.0
+gold_value = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ner4n")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rv2sb")
+autoplay = "default"
+frame_progress = 0.1613
+metadata/_edit_lock_ = true
+
+[node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_rhc1h")]
+
+[connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

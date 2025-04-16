@@ -7,6 +7,8 @@ var timer := 0.0
 
 @onready var sprite:AnimatedSprite2D = get_node("Sprite2D")
 
+func _ready() -> void:
+	timer = randf_range(0,3)
 
 func _process(delta: float) -> void:
 	if is_going_right:

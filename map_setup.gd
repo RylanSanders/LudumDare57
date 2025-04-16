@@ -5,12 +5,17 @@ var ROW_HEIGHT:=32
 var COL_WIDTH:=32
 var NUM_COLUMN:=17
 
+var MIN_SMALL_FISH :=3
+var MAX_SMALL_FISH :=10
+
 @export var fish_prob:float = 0.1
 @export var plank_prob:float = 0.1
 @export var seaweed_prob:float = 0.1
 @export var rock_prob:float = 0.1
 
 @export var fish_scn:PackedScene
+@export var big_fish_scn: PackedScene
+@export var small_fish_scn: PackedScene
 @export var plank_scn:PackedScene
 @export var seaweed_scn:PackedScene
 @export var rock_scn:PackedScene
@@ -82,10 +87,25 @@ func spawn_rock(row: int, col:int, is_left:bool):
 	add_child(d)
 
 func spawn_fish(row: int, col:int):
-	var d:Node2D = fish_scn.instantiate()
-	d.position.y = row * ROW_HEIGHT + SpawnOffset.position.y
-	d.position.x = (col+1) *COL_WIDTH + + SpawnOffset.position.x
-	add_child(d)
+	var randNum := randi_range(1,3)
+	if randNum == 1:
+		var d:Node2D = fish_scn.instantiate()
+		d.position.y = row * ROW_HEIGHT + SpawnOffset.position.y
+		d.position.x = (col+1) *COL_WIDTH + + SpawnOffset.position.x
+		add_child(d)
+	if randNum == 2:
+		var d:Node2D = big_fish_scn.instantiate()
+		d.position.y = row * ROW_HEIGHT + SpawnOffset.position.y
+		d.position.x = (col+1) *COL_WIDTH + + SpawnOffset.position.x
+		add_child(d)
+	if randNum == 3:
+		var num_small_fish := randi_range(MIN_SMALL_FISH, MAX_SMALL_FISH)
+		for fish in range(num_small_fish):
+			var d:Node2D = small_fish_scn.instantiate()
+			d.position.y = row * ROW_HEIGHT + SpawnOffset.position.y + randi_range(-16,16)
+			d.position.x = (col+1) *COL_WIDTH + + SpawnOffset.position.x + randi_range(-16,16)
+			add_child(d)
+	
 
 func spawn_seaweed(row: int, col:int):
 	var d:Node2D = plank_scn.instantiate()
