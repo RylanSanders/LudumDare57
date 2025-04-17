@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://cca2mu1t2iurh"]
 
-[ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scenes/fish.gd" id="1_6p20w"]
+[ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scripts/fish.gd" id="1_6p20w"]
 [ext_resource type="Texture2D" uid="uid://2v1ffoy5jobe" path="res://Obstacles/Sprites/GoodFish2.png" id="2_6p20w"]
-[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/ShardEmitter.tscn" id="3_w1raa"]
+[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/Scenes/ShardEmitter.tscn" id="3_w1raa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4o3t"]
 atlas = ExtResource("2_6p20w")

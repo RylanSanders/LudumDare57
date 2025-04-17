@@ -13,11 +13,10 @@ config_version=5
 config/name="Spear"
 run/main_scene="uid://bjqi2kveqdgok"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
-AudioManger="*res://sounds/audio_manger.gd"
+AudioManger="*res://Sounds/audio_manger.gd"
 
 [debug]
 

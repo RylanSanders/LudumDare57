@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://1mkcguaba20d"
-path="res://.godot/imported/water-[AudioTrimmer.com].mp3-621d987933b3461e5db917ba570908a5.mp3str"
+path="res://.godot/imported/water-[AudioTrimmer.com].mp3-736264af038fba6051069ed2cb01da5c.mp3str"
 
 [deps]
 
-source_file="res://sounds/water-[AudioTrimmer.com].mp3"
-dest_files=["res://.godot/imported/water-[AudioTrimmer.com].mp3-621d987933b3461e5db917ba570908a5.mp3str"]
+source_file="res://Sounds/water-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/water-[AudioTrimmer.com].mp3-736264af038fba6051069ed2cb01da5c.mp3str"]
 
 [params]
 

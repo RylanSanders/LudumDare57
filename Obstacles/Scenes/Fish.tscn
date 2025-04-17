@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://8cohpgf4so2m"]
 
-[ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scenes/fish.gd" id="1_5uvof"]
+[ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scripts/fish.gd" id="1_5uvof"]
 [ext_resource type="Texture2D" uid="uid://c2dosey72g268" path="res://Obstacles/Sprites/GoodFish1.png" id="2_ner4n"]
-[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/ShardEmitter.tscn" id="3_ner4n"]
+[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/Scenes/ShardEmitter.tscn" id="3_ner4n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ner4n"]
 radius = 3.0
