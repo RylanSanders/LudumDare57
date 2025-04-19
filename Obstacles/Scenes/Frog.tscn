@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://bi6owmwtwa2v5"]
+
+[ext_resource type="Script" uid="uid://dbtyrw8comn71" path="res://Obstacles/Scripts/frog.gd" id="1_0el5g"]
+[ext_resource type="Texture2D" uid="uid://ba1epoy63iiy" path="res://Obstacles/Sprites/Frog-Body.png" id="2_5q33s"]
+[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/Scenes/ShardEmitter.tscn" id="3_5q33s"]
+[ext_resource type="Texture2D" uid="uid://w7m4drvomgpb" path="res://Obstacles/Sprites/Frog-Pupils.png" id="3_kd3rd"]
+[ext_resource type="Texture2D" uid="uid://8e0rfrkjwb6r" path="res://Obstacles/Sprites/Frog-Bottom.png" id="4_qjpuo"]
+[ext_resource type="Texture2D" uid="uid://da2md6n2s1f4m" path="res://Obstacles/Sprites/Frog-Tongue.png" id="5_kd3rd"]
+[ext_resource type="Texture2D" uid="uid://dsqw67svxngmb" path="res://Obstacles/Sprites/Frog-Tongue-Bulb.png" id="7_1fs8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fclqj"]
+size = Vector2(43, 31)
+
+[sub_resource type="Animation" id="Animation_qjpuo"]
+resource_name = "attack"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.266667, 3, 3.75, 5.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"shoot_tongue"
+}, {
+"args": [],
+"method": &"follow_tongue"
+}, {
+"args": [],
+"method": &"flip"
+}, {
+"args": [],
+"method": &"clear"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fs8o"]
+_data = {
+&"attack": SubResource("Animation_qjpuo")
+}
+
+[node name="Frog" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_0el5g")
+durability = 30.0
+gold_value = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_fclqj")
+metadata/_edit_lock_ = true
+
+[node name="Frog-body" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(11, -16)
+texture = ExtResource("2_5q33s")
+metadata/_edit_lock_ = true
+
+[node name="ShardEmitter" parent="Frog-body" instance=ExtResource("3_5q33s")]
+
+[node name="Frog-bottom" type="Sprite2D" parent="Frog-body"]
+z_index = -2
+texture = ExtResource("4_qjpuo")
+
+[node name="LeftPupil" type="Node2D" parent="."]
+position = Vector2(-17, -14)
+metadata/_edit_lock_ = true
+
+[node name="LeftPupilSprite" type="Sprite2D" parent="LeftPupil"]
+z_index = 3
+position = Vector2(1, -4)
+texture = ExtResource("3_kd3rd")
+
+[node name="RightPupil" type="Node2D" parent="."]
+position = Vector2(19.76, -11.84)
+metadata/_edit_lock_ = true
+
+[node name="RightPupilSprite" type="Sprite2D" parent="RightPupil"]
+z_index = 3
+position = Vector2(0, -4)
+texture = ExtResource("3_kd3rd")
+metadata/_edit_lock_ = true
+
+[node name="TongueLine" type="Line2D" parent="."]
+z_index = 1
+texture_repeat = 2
+position = Vector2(3, -3)
+points = PackedVector2Array(0, 0, 0, -9, -1, -19, 10, -39, 17, -76)
+width = 17.06
+texture = ExtResource("5_kd3rd")
+texture_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1fs8o")
+}
+autoplay = "attack"
+
+[node name="TongueSpawn" type="Node2D" parent="."]
+position = Vector2(1, -9)
+
+[node name="FrogTongueParent" type="Node2D" parent="."]
+position = Vector2(19, -80)
+
+[node name="Frog-tongue-bulb" type="Sprite2D" parent="FrogTongueParent"]
+z_index = 3
+position = Vector2(-3, -3)
+scale = Vector2(1, 1)
+texture = ExtResource("7_1fs8o")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -1000)

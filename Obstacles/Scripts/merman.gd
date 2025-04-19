@@ -19,7 +19,7 @@ func spawn_trident() -> void:
 	new_trident.global_position = trident_point.global_position
 	get_parent().add_child(new_trident)
 	last_trident = new_trident
-
+	
 func launch_trident() -> void:
 	if last_trident != null:
 		last_trident.launch((spear.global_position - global_position).normalized() * TRIDENT_VEL)

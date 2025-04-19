@@ -123,6 +123,21 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_mekmr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Merman-arm-parent:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_q1nkd"]
 resource_name = "throw"
 length = 1.5
@@ -157,21 +172,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_mekmr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Merman-arm-parent:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qdif3"]
 _data = {
 &"RESET": SubResource("Animation_mekmr"),
@@ -193,7 +193,7 @@ shape = SubResource("CapsuleShape2D_gejbo")
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_v45d8")
 autoplay = "default"
-frame_progress = 0.756171
+frame_progress = 0.178691
 metadata/_edit_lock_ = true
 
 [node name="ShardEmitter" parent="Merman-body" instance=ExtResource("3_gejbo")]
