@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vkx6723msxl7"
-path="res://.godot/imported/LeftEye.png-f18ebe20f1565dbad2887856ad1e6d43.ctex"
+uid="uid://cq4ovv7x75ji3"
+path="res://.godot/imported/RightEye.png-722b622b05edbe00c9294edd1955c25b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Obstacles/LeftEye.png"
-dest_files=["res://.godot/imported/LeftEye.png-f18ebe20f1565dbad2887856ad1e6d43.ctex"]
+source_file="res://Main/Sprites/RightEye.png"
+dest_files=["res://.godot/imported/RightEye.png-722b622b05edbe00c9294edd1955c25b.ctex"]
 
 [params]
 

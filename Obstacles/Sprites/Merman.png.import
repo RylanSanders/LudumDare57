@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://plnls4vykuwd"
-path="res://.godot/imported/knight.png-0e291a77fc7a2b8a744800a2844ebacd.ctex"
+uid="uid://cpi71hokqhft4"
+path="res://.godot/imported/Merman.png-4c4bb1041041bf0c8d9ad9d3b85bcf84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main/Sprites/knight.png"
-dest_files=["res://.godot/imported/knight.png-0e291a77fc7a2b8a744800a2844ebacd.ctex"]
+source_file="res://Obstacles/Sprites/Merman.png"
+dest_files=["res://.godot/imported/Merman.png-4c4bb1041041bf0c8d9ad9d3b85bcf84.ctex"]
 
 [params]
 

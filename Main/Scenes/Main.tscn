@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=35 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://Main/Scripts/game_controller.gd" id="1_is8yi"]
 [ext_resource type="PackedScene" uid="uid://0m04bnj6k8lb" path="res://UI/Scenes/DeathMenu.tscn" id="2_87gcw"]
@@ -12,15 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://cbq6qsjvf7wcr" path="res://Main/Sprites/RoughSpear.png" id="10_01wo1"]
 [ext_resource type="AudioStream" uid="uid://cpe3yxtmqn0qg" path="res://Sounds/breath-[AudioTrimmer.com].mp3" id="11_u5hxn"]
 [ext_resource type="AudioStream" uid="uid://1mkcguaba20d" path="res://Sounds/water-[AudioTrimmer.com].mp3" id="12_sajtl"]
-[ext_resource type="Texture2D" uid="uid://vkx6723msxl7" path="res://Obstacles/LeftEye.png" id="13_ribh5"]
-[ext_resource type="Texture2D" uid="uid://cq4ovv7x75ji3" path="res://Obstacles/RightEye.png" id="14_fx2vg"]
+[ext_resource type="Texture2D" uid="uid://vkx6723msxl7" path="res://Main/Sprites/LeftEye.png" id="13_ribh5"]
+[ext_resource type="Texture2D" uid="uid://cq4ovv7x75ji3" path="res://Main/Sprites/RightEye.png" id="14_fx2vg"]
 [ext_resource type="Texture2D" uid="uid://vnvgxqxup525" path="res://UI/saveGear.png" id="15_kf8rr"]
 [ext_resource type="Texture2D" uid="uid://4wddww3wcd4d" path="res://Main/Sprites/GoldCoin.png" id="16_jvmpf"]
-[ext_resource type="Texture2D" uid="uid://dcv07elj2lfo2" path="res://Main/Sprites/knight.png" id="17_y7ssf"]
+[ext_resource type="Texture2D" uid="uid://plnls4vykuwd" path="res://Main/Sprites/knight.png" id="17_y7ssf"]
 [ext_resource type="Script" uid="uid://drp248qd7btqs" path="res://Main/Scripts/knight_arm.gd" id="18_m4t7n"]
 [ext_resource type="Script" uid="uid://dce4uhpowhrek" path="res://Main/Scripts/shop.gd" id="19_yb7y2"]
 [ext_resource type="LabelSettings" uid="uid://dgubixnxviygg" path="res://UI/textsettings.tres" id="20_5f4yl"]
 [ext_resource type="Texture2D" uid="uid://bbfq45cjpoy5k" path="res://Main/Sprites/Platform.png" id="21_peulu"]
+[ext_resource type="PackedScene" uid="uid://b1swhw1yj30uq" path="res://Obstacles/Scenes/Merman.tscn" id="22_87gcw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trn2v"]
 
@@ -125,6 +126,7 @@ texture_progress_offset = Vector2(0, 2.32)
 script = ExtResource("8_n6xj6")
 
 [node name="Spear" type="RigidBody2D" parent="."]
+unique_name_in_owner = true
 z_index = 3
 position = Vector2(-13, -191)
 physics_material_override = SubResource("PhysicsMaterial_uu6xs")
@@ -369,6 +371,9 @@ label_settings = ExtResource("20_5f4yl")
 [node name="Platform" type="Sprite2D" parent="."]
 position = Vector2(6, -124)
 texture = ExtResource("21_peulu")
+
+[node name="Merman" parent="." instance=ExtResource("22_87gcw")]
+position = Vector2(124, -157)
 
 [connection signal="area_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_area_entered"]
 [connection signal="body_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_body_entered"]

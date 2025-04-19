@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://plnls4vykuwd"
-path="res://.godot/imported/knight.png-0e291a77fc7a2b8a744800a2844ebacd.ctex"
+uid="uid://vkx6723msxl7"
+path="res://.godot/imported/LeftEye.png-9ed43a7c6c127f4f3068fa5ef87463f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main/Sprites/knight.png"
-dest_files=["res://.godot/imported/knight.png-0e291a77fc7a2b8a744800a2844ebacd.ctex"]
+source_file="res://Main/Sprites/LeftEye.png"
+dest_files=["res://.godot/imported/LeftEye.png-9ed43a7c6c127f4f3068fa5ef87463f3.ctex"]
 
 [params]
 

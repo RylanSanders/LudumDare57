@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvwtpog55o5bx"]
+
+[ext_resource type="Texture2D" uid="uid://dws6jgnw7gowo" path="res://Obstacles/Sprites/Trident.png" id="1_mrq2w"]
+[ext_resource type="Script" uid="uid://bogv5reapqk72" path="res://Obstacles/Scripts/trident.gd" id="2_ks5h3"]
+
+[node name="Trident" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_mrq2w")
+flip_h = true
+script = ExtResource("2_ks5h3")

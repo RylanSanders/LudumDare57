@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://plnls4vykuwd"
-path="res://.godot/imported/knight.png-58153dfd4424cd14f68e6f152eef6a5b.ctex"
+uid="uid://dws6jgnw7gowo"
+path="res://.godot/imported/Trident.png-847a942f92b7ed85036a47b4b66ee598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Obstacles/knight.png"
-dest_files=["res://.godot/imported/knight.png-58153dfd4424cd14f68e6f152eef6a5b.ctex"]
+source_file="res://Obstacles/Sprites/Trident.png"
+dest_files=["res://.godot/imported/Trident.png-847a942f92b7ed85036a47b4b66ee598.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq4ovv7x75ji3"
-path="res://.godot/imported/RightEye.png-2e8e1790c00ffeba567734b24e690d26.ctex"
+uid="uid://0eilijt3tm5c"
+path="res://.godot/imported/Merman-Arm.png-f48b7fbb2c13edbc7adf61618169b206.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Obstacles/RightEye.png"
-dest_files=["res://.godot/imported/RightEye.png-2e8e1790c00ffeba567734b24e690d26.ctex"]
+source_file="res://Obstacles/Sprites/Merman-Arm.png"
+dest_files=["res://.godot/imported/Merman-Arm.png-f48b7fbb2c13edbc7adf61618169b206.ctex"]
 
 [params]
 

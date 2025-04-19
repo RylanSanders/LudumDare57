@@ -1,0 +1,214 @@
+[gd_scene load_steps=26 format=3 uid="uid://b1swhw1yj30uq"]
+
+[ext_resource type="Texture2D" uid="uid://cpi71hokqhft4" path="res://Obstacles/Sprites/Merman.png" id="1_6idgx"]
+[ext_resource type="Script" uid="uid://dt2tfy2310b4w" path="res://Obstacles/Scripts/merman.gd" id="1_tt2y3"]
+[ext_resource type="PackedScene" uid="uid://cvwtpog55o5bx" path="res://Obstacles/Scenes/trident.tscn" id="2_q1nkd"]
+[ext_resource type="PackedScene" uid="uid://dlldxom3leph0" path="res://Util/Scenes/ShardEmitter.tscn" id="3_gejbo"]
+[ext_resource type="Texture2D" uid="uid://dckldc43dxp1k" path="res://Obstacles/Sprites/Mermanarm.png" id="4_gejbo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gejbo"]
+radius = 15.0
+height = 66.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1nkd"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(0, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mekmr"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(53, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdif3"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(106, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqst6"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(159, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vfrm"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(212, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drurj"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(265, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmlvk"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(318, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrfgu"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(371, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0flj"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(424, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2faw"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(477, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yweqn"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(530, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxu4u"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(583, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd8oi"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(636, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ae6a"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(689, 0, 53, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysqp6"]
+atlas = ExtResource("1_6idgx")
+region = Rect2(742, 0, 53, 88)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v45d8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1nkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mekmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqst6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vfrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drurj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmlvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrfgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0flj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2faw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yweqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxu4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd8oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ae6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysqp6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_q1nkd"]
+resource_name = "throw"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Merman-arm-parent:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 0.277392, 1, 0.148651),
+"update": 0,
+"values": [0.0, 1.51844, 1.51844, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_trident"
+}, {
+"args": [],
+"method": &"launch_trident"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mekmr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Merman-arm-parent:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdif3"]
+_data = {
+&"RESET": SubResource("Animation_mekmr"),
+&"throw": SubResource("Animation_q1nkd")
+}
+
+[node name="Merman" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_tt2y3")
+trident = ExtResource("2_q1nkd")
+durability = 200.0
+gold_value = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -9)
+shape = SubResource("CapsuleShape2D_gejbo")
+
+[node name="Merman-body" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_v45d8")
+autoplay = "default"
+frame_progress = 0.756171
+metadata/_edit_lock_ = true
+
+[node name="ShardEmitter" parent="Merman-body" instance=ExtResource("3_gejbo")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qdif3")
+}
+autoplay = "throw"
+
+[node name="Merman-arm-parent" type="Node2D" parent="."]
+position = Vector2(-3.3, -21.39)
+
+[node name="Merman-arm" type="Sprite2D" parent="Merman-arm-parent"]
+position = Vector2(-11.31, 0)
+texture = ExtResource("4_gejbo")
+
+[node name="Trident-point" type="Node2D" parent="Merman-arm-parent/Merman-arm"]
