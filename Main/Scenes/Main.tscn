@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=37 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://Main/Scripts/game_controller.gd" id="1_is8yi"]
 [ext_resource type="PackedScene" uid="uid://0m04bnj6k8lb" path="res://UI/Scenes/DeathMenu.tscn" id="2_87gcw"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bbfq45cjpoy5k" path="res://Main/Sprites/Platform.png" id="21_peulu"]
 [ext_resource type="PackedScene" uid="uid://b1swhw1yj30uq" path="res://Obstacles/Scenes/Merman.tscn" id="22_87gcw"]
 [ext_resource type="PackedScene" uid="uid://bi6owmwtwa2v5" path="res://Obstacles/Scenes/Frog.tscn" id="23_x4eni"]
+[ext_resource type="PackedScene" uid="uid://c2mf8w28fh23i" path="res://Obstacles/Scenes/Jellyfish.tscn" id="24_st7so"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trn2v"]
 
@@ -379,6 +380,9 @@ position = Vector2(124, -157)
 [node name="Frog" parent="." instance=ExtResource("23_x4eni")]
 position = Vector2(-102, 44)
 rotation = 1.5708
+
+[node name="RigidBody2D" parent="." instance=ExtResource("24_st7so")]
+position = Vector2(-190, -84)
 
 [connection signal="area_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_area_entered"]
 [connection signal="body_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_body_entered"]

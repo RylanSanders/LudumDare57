@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkvw1xlt8pp36"]
+
+[ext_resource type="Script" uid="uid://ucyrx2g4jwuw" path="res://Obstacles/Scripts/jellyfish_orb.gd" id="1_5wm0j"]
+[ext_resource type="Texture2D" uid="uid://ikjsobqn1y7t" path="res://Obstacles/Sprites/Jellyfish-Orb.png" id="1_m2c65"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wm0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiitj"]
+atlas = ExtResource("1_m2c65")
+region = Rect2(0, 0, 41, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um1b0"]
+atlas = ExtResource("1_m2c65")
+region = Rect2(41, 0, 41, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8bd"]
+atlas = ExtResource("1_m2c65")
+region = Rect2(82, 0, 41, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i60k7"]
+atlas = ExtResource("1_m2c65")
+region = Rect2(123, 0, 41, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_br65o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiitj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um1b0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i60k7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="JellyfishOrb" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_5wm0j")
+durability = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5wm0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_br65o")
+autoplay = "default"
+frame_progress = 0.972544
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="delete"]

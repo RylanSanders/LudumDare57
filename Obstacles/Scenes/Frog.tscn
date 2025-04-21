@@ -110,7 +110,6 @@ position = Vector2(19, -80)
 [node name="Frog-tongue-bulb" type="Sprite2D" parent="FrogTongueParent"]
 z_index = 3
 position = Vector2(-3, -3)
-scale = Vector2(1, 1)
 texture = ExtResource("7_1fs8o")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

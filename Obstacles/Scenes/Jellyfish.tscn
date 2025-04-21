@@ -1,0 +1,130 @@
+[gd_scene load_steps=16 format=3 uid="uid://c2mf8w28fh23i"]
+
+[ext_resource type="Script" uid="uid://xxh6i72hc6p7" path="res://Obstacles/Scripts/jellyfish.gd" id="1_dom27"]
+[ext_resource type="PackedScene" uid="uid://bkvw1xlt8pp36" path="res://Obstacles/Scenes/JellyfishOrb.tscn" id="2_86yhg"]
+[ext_resource type="Texture2D" uid="uid://cxh7o5rcip7pe" path="res://Obstacles/Sprites/JellyFish.png" id="2_t3yds"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dom27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86yhg"]
+size = Vector2(34, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fplnu"]
+atlas = ExtResource("2_t3yds")
+region = Rect2(0, 0, 53, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3h3o"]
+atlas = ExtResource("2_t3yds")
+region = Rect2(53, 0, 53, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe7ot"]
+atlas = ExtResource("2_t3yds")
+region = Rect2(106, 0, 53, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvccw"]
+atlas = ExtResource("2_t3yds")
+region = Rect2(159, 0, 53, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hcdx"]
+atlas = ExtResource("2_t3yds")
+region = Rect2(212, 0, 53, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rib7e"]
+atlas = ExtResource("2_t3yds")
+region = Rect2(265, 0, 53, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdbg8"]
+atlas = ExtResource("2_t3yds")
+region = Rect2(318, 0, 53, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uhbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fplnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3h3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe7ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvccw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hcdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rib7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdbg8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_t3yds"]
+resource_name = "main"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.866667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"move"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86yhg"]
+_data = {
+&"main": SubResource("Animation_t3yds")
+}
+
+[node name="JellyFishBody" type="RigidBody2D"]
+mass = 0.001
+gravity_scale = 0.15
+linear_damp = 5.0
+angular_damp_mode = 1
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -19)
+shape = SubResource("CircleShape2D_dom27")
+
+[node name="Jellyfish" type="Area2D" parent="."]
+texture_filter = 1
+script = ExtResource("1_dom27")
+orb = ExtResource("2_86yhg")
+gold_value = 30
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jellyfish"]
+position = Vector2(1, 3.5)
+shape = SubResource("RectangleShape2D_86yhg")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jellyfish"]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_1uhbc")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Jellyfish"]
+libraries = {
+&"": SubResource("AnimationLibrary_86yhg")
+}
+autoplay = "main"
+
+[node name="OrbSpawn" type="Node2D" parent="Jellyfish"]
