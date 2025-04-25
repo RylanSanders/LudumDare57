@@ -28,6 +28,8 @@ var shards = []
 func _ready() -> void:
 	$DeleteTimer.timeout.connect(_on_DeleteTimer_timeout)
 	
+
+func test():
 	if get_parent() is Sprite2D:
 		var _rect = get_parent().get_rect()
 		var points = []
@@ -89,6 +91,8 @@ func add_shards() -> void:
 
 
 func shatter() -> void:
+	global_position = get_parent().global_position
+	test()
 	randomize()
 	get_parent().self_modulate.a = 0
 	for s in shards:

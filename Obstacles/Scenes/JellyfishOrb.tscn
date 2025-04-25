@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ikjsobqn1y7t" path="res://Obstacles/Sprites/Jellyfish-Orb.png" id="1_m2c65"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wm0j"]
+radius = 14.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aiitj"]
 atlas = ExtResource("1_m2c65")
@@ -45,6 +46,7 @@ animations = [{
 texture_filter = 1
 script = ExtResource("1_5wm0j")
 durability = 100.0
+damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5wm0j")
@@ -58,4 +60,5 @@ frame_progress = 0.972544
 wait_time = 5.0
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]
 [connection signal="timeout" from="Timer" to="." method="delete"]

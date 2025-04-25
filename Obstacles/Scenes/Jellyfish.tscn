@@ -128,3 +128,5 @@ libraries = {
 autoplay = "main"
 
 [node name="OrbSpawn" type="Node2D" parent="Jellyfish"]
+
+[connection signal="area_entered" from="Jellyfish" to="Jellyfish" method="_on_obstacle_entered"]

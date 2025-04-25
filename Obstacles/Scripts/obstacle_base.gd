@@ -3,6 +3,7 @@ extends Area2D
 class_name obstacle_base
 @export var durability:float = 10
 @export var gold_value:int = 0
+@export var damage: int = 0
 
 var is_dead :=false
 var death_timer:=0.0
@@ -19,6 +20,7 @@ func _on_obstacle_entered(area: Area2D) -> void:
 		var params:obstacle_params  = obstacle_params.new()
 		params.durability = durability
 		params.gold_value = gold_value
+		params.damage = damage
 		var is_destroyed: bool = area.get_parent().hit_obstacle(params)
 		if is_destroyed:
 			_on_destroyed()

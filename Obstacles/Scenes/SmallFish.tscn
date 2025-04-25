@@ -64,6 +64,7 @@ frame_progress = 0.1613
 metadata/_edit_lock_ = true
 
 [node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_rhc1h")]
+nbr_of_shards = 3
 
 [connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

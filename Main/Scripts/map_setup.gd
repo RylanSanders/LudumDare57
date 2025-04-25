@@ -3,7 +3,7 @@ extends Node2D
 var NUM_ROWS:=17
 var ROW_HEIGHT:=32
 var COL_WIDTH:=32
-var NUM_COLUMN:=17
+var NUM_COLUMN:=24
 
 var MIN_SMALL_FISH :=3
 var MAX_SMALL_FISH :=10
@@ -37,7 +37,7 @@ var STARTING_RIGHT_GRID_POS := Vector2(8,-2)
 var STARTING_LEFT_GRID_POS := Vector2(-10,-2)
 var ATLAS_INDEX := 0
 var WALL_INDEX :=Vector2(1,0)
-var WALL_IN_GENERATION = 4
+var WALL_IN_GENERATION = 10
 var starting_y_val :=0
 var seed :=0
 var LEFT_GEN_OFFSET = 334.2543
@@ -61,7 +61,7 @@ func spawn_walls():
 		if randf()<rock_prob/2:
 				spawn_rock(i,left_wall_pos_x+11, false)
 		var num_cols = right_wall_pos_x-left_wall_pos_x
-		for possible_x in range(left_wall_pos_x+1, right_wall_pos_x-1):
+		for possible_x in range(left_wall_pos_x+1+11, right_wall_pos_x+11):
 			if randf()<fish_prob/num_cols:
 				spawn_fish(i,possible_x)
 			if randf()<plank_prob/num_cols:
@@ -74,7 +74,7 @@ func spawn_walls():
 
 func calculate_wall_offset(y_cord: int) -> int:
 	var seeded_y_pos = seed + y_cord
-	return (sin (0.1* seeded_y_pos) + sin(PI * seeded_y_pos * 0.04)) * 4.0
+	return (sin (0.1* seeded_y_pos) + sin(PI * seeded_y_pos * 0.06)) * 4.0
 
 func spawn_rock(row: int, col:int, is_left:bool):
 	var d:Node2D = rock_scn.instantiate()

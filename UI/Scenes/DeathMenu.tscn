@@ -1,44 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://0m04bnj6k8lb"]
+[gd_scene load_steps=4 format=3 uid="uid://0m04bnj6k8lb"]
 
 [ext_resource type="Script" uid="uid://d255dc8qfp7rw" path="res://UI/Scripts/death_menu.gd" id="1_dbqb0"]
 [ext_resource type="LabelSettings" uid="uid://dgubixnxviygg" path="res://UI/textsettings.tres" id="2_1hmi0"]
 
-[node name="DeathMenu" type="PopupMenu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhaaw"]
+bg_color = Color(0.373997, 0.660943, 0.625093, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_color = Color(0.653628, 0.888503, 0.304747, 1)
+
+[node name="DeathMenu" type="CanvasLayer"]
 process_mode = 3
-size = Vector2i(255, 100)
-visible = true
-unfocusable = true
 script = ExtResource("1_dbqb0")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 27.0
-offset_top = 5.0
-offset_right = 223.0
-offset_bottom = 104.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.857
+offset_top = -50.0
+offset_right = 130.857
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(261.715, 100)
+layout_mode = 2
+size_flags_stretch_ratio = 1.75
+theme_override_styles/panel = SubResource("StyleBoxFlat_dhaaw")
+
+[node name="Control" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(14.315, 13.75)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Control"]
+top_level = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Control"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
 text = "That's as deep as you'll go!"
 label_settings = ExtResource("2_1hmi0")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="RetryButton" type="MenuButton" parent="."]
-offset_left = 17.0
-offset_top = 48.0
-offset_right = 91.0
-offset_bottom = 98.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(5.035, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.18
+
+[node name="RetryButton" type="MenuButton" parent="CenterContainer/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 30
 text = "Retry"
 
-[node name="MainMenuButton" type="MenuButton" parent="."]
-offset_left = 116.0
-offset_top = 54.0
-offset_right = 245.0
-offset_bottom = 94.0
+[node name="MainMenuButton" type="MenuButton" parent="CenterContainer/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 30
 text = "Main Menu"
 
-[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Control/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Control/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

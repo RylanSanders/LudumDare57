@@ -16,8 +16,10 @@ var is_stuck:= false
 @onready var LeftNode:Node2D = get_node("Left")
 @onready var RightNode:Node2D = get_node("Right")
 @onready var LaunchStrengthBar:TextureProgressBar = get_node("../LaunchStrengthProgressBar")
-@onready var GameController = get_node("..")
+@onready var GameController: game_controller = get_node("..")
 @onready var Shop: shop = get_node("../Shop")
+@onready var shardEmitter: ShardEmitter = $Sprite2D/ShardEmitter
+@onready var EndGameTimer: Timer = $EndgameTimer
 
 @onready var BreathSound: AudioStreamPlayer = get_node("Audio/Breath")
 @onready var WaterSound: AudioStreamPlayer = get_node("Audio/Water")
@@ -109,6 +111,9 @@ var durabilityModifier = 1
 func hit_obstacle(params: obstacle_params) -> bool:
 	apply_impulse(Vector2(0,-params.durability* durabilityModifier))
 	GameController.add_gold(params.gold_value)
+	if params.damage>=1:
+		EndGameTimer.start()
+		shardEmitter.shatter()
 	if not does_spear_break_through(params):
 		is_stuck = true
 		return false

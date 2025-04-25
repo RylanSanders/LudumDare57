@@ -1,4 +1,4 @@
-extends PopupMenu
+extends CanvasLayer
 
 var GameController
 

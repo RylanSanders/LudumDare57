@@ -2,6 +2,7 @@ extends Node2D
 
 class_name game_controller
 
+
 @export var death_menu:PackedScene
 @export var out_of_bounds_death_menu:PackedScene
 @export var pause_menu:PackedScene
@@ -28,23 +29,22 @@ var SHOW_OBJS_REFRESH_RATE = 2
 
 var last_pause_menu: PopupMenu
 
+
+
 func game_over():
 	get_tree().paused=true
-	var new_death_menu :PopupMenu = death_menu.instantiate()
+	var new_death_menu :CanvasLayer = death_menu.instantiate()
 	record_high_score()
 	new_death_menu.GameController=self
 	add_child(new_death_menu)
-	
-	new_death_menu.popup_centered()
+	new_death_menu.show()
 
 func out_of_bounds():
 	get_tree().paused=true
-	var new_death_menu :PopupMenu = out_of_bounds_death_menu.instantiate()
+	var new_death_menu :CanvasLayer = out_of_bounds_death_menu.instantiate()
 	record_high_score()
 	new_death_menu.GameController=self
 	add_child(new_death_menu)
-	
-	new_death_menu.popup_centered()
 
 func record_high_score() -> void:
 	var new_score = calculate_depth()
