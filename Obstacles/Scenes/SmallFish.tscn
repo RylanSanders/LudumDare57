@@ -50,6 +50,7 @@ SPEED = 150
 VERTICAL_SPEED_MULTIPLIER = 2.0
 durability = 5.0
 gold_value = 3
+item_type = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -60,7 +61,7 @@ shape = SubResource("CapsuleShape2D_ner4n")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_rv2sb")
 autoplay = "default"
-frame_progress = 0.1613
+frame_progress = 0.842024
 metadata/_edit_lock_ = true
 
 [node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_rhc1h")]

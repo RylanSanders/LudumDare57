@@ -8,10 +8,10 @@ class_name game_controller
 @export var pause_menu:PackedScene
 @export var show_num_objs: bool = false
 @onready var spear:Node2D = get_node("Spear")
-@onready var depth_label:Label = get_node("CanvasLayer/DepthLabel")
-@onready var high_score_label: Label = get_node("CanvasLayer/HighScoreLabel")
-@onready var gold_label: Label = get_node("CanvasLayer/GoldLabel")
-@onready var num_objs_label:Label = get_node("CanvasLayer/NumObjectsLabel")
+@onready var depth_label:Label = get_node("HUD/DepthLabel")
+@onready var high_score_label: Label = get_node("HUD/HighScoreLabel")
+@onready var gold_label: Label = get_node("HUD/GoldLabel")
+@onready var num_objs_label:Label = get_node("HUD/NumObjectsLabel")
 
 var DEPTH_LABEL := "DEPTH: "
 var HIGH_SCORE_LABEL := "HIGH SCORE: "

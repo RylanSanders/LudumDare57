@@ -10,6 +10,7 @@ size = Vector2(44, 18.5)
 [node name="Plank" type="Area2D"]
 script = ExtResource("1_0eptu")
 durability = 20.0
+item_type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.75)

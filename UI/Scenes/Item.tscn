@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://irp7eu43r2hr"]
+
+[ext_resource type="Script" uid="uid://yp80d1mri6o5" path="res://Obstacles/Scripts/item.gd" id="1_g1aed"]
+[ext_resource type="Texture2D" uid="uid://cjgr40jaj6tof" path="res://UI/Sprites/TMPItemSprite.png" id="2_0uai0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkp4e"]
+
+[node name="Item" type="Area2D"]
+collision_layer = 524288
+collision_mask = 524288
+script = ExtResource("1_g1aed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rkp4e")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_0uai0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

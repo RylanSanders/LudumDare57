@@ -61,6 +61,7 @@ animations = [{
 [node name="Fish" type="Area2D"]
 script = ExtResource("1_5uvof")
 gold_value = 2
+item_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
