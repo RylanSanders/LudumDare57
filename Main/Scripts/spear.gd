@@ -110,7 +110,8 @@ var durabilityModifier = 1
 #For now this is going to return true if the ostacle isbroken and false otherwise
 func hit_obstacle(params: obstacle_params) -> bool:
 	apply_impulse(Vector2(0,-params.durability* durabilityModifier))
-	GameController.add_gold(params.gold_value)
+	#GameController.add_gold(params.gold_value)
+	GameController.add_item(params.item_type)
 	if params.damage>=1:
 		EndGameTimer.start()
 		shardEmitter.shatter()

@@ -23,6 +23,7 @@ func _on_obstacle_entered(area: Area2D) -> void:
 		params.durability = durability
 		params.gold_value = gold_value
 		params.damage = damage
+		params.item_type = item_type
 		var is_destroyed: bool = area.get_parent().hit_obstacle(params)
 		if is_destroyed:
 			_on_destroyed()

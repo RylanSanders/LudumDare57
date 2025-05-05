@@ -49,6 +49,7 @@ texture_filter = 1
 script = ExtResource("1_0el5g")
 durability = 30.0
 gold_value = 10
+item_type = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1.5)

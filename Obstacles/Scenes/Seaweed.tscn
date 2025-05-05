@@ -10,6 +10,7 @@ size = Vector2(27, 27)
 [node name="Seaweed" type="Area2D"]
 script = ExtResource("1_8i82p")
 durability = 20.0
+item_type = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1.5)

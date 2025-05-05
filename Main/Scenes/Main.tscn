@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=38 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://Main/Scripts/game_controller.gd" id="1_is8yi"]
 [ext_resource type="PackedScene" uid="uid://0m04bnj6k8lb" path="res://UI/Scenes/DeathMenu.tscn" id="2_87gcw"]
@@ -17,11 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cq4ovv7x75ji3" path="res://Main/Sprites/RightEye.png" id="14_fx2vg"]
 [ext_resource type="Texture2D" uid="uid://vnvgxqxup525" path="res://UI/saveGear.png" id="15_kf8rr"]
 [ext_resource type="Texture2D" uid="uid://4wddww3wcd4d" path="res://Main/Sprites/GoldCoin.png" id="16_jvmpf"]
-[ext_resource type="Script" uid="uid://22tdiqkixu0t" path="res://Main/Scenes/hud.gd" id="16_st7so"]
+[ext_resource type="Script" uid="uid://22tdiqkixu0t" path="res://Main/Scripts/hud.gd" id="16_st7so"]
 [ext_resource type="Texture2D" uid="uid://plnls4vykuwd" path="res://Main/Sprites/knight.png" id="17_y7ssf"]
 [ext_resource type="Script" uid="uid://drp248qd7btqs" path="res://Main/Scripts/knight_arm.gd" id="18_m4t7n"]
 [ext_resource type="Script" uid="uid://dce4uhpowhrek" path="res://Main/Scripts/shop.gd" id="19_yb7y2"]
-[ext_resource type="Script" uid="uid://dvu8g3jhsiurt" path="res://Main/Scenes/debug_item.gd" id="20_3mcr0"]
 [ext_resource type="LabelSettings" uid="uid://dgubixnxviygg" path="res://UI/textsettings.tres" id="20_5f4yl"]
 [ext_resource type="Texture2D" uid="uid://bbfq45cjpoy5k" path="res://Main/Sprites/Platform.png" id="21_peulu"]
 [ext_resource type="Texture2D" uid="uid://bbty7acorciym" path="res://Main/Sprites/Chest.png" id="23_x4eni"]
@@ -119,17 +118,6 @@ shape = SubResource("RectangleShape2D_devvj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapController/StartingMap/bound3"]
 position = Vector2(-16.5, -489)
 shape = SubResource("RectangleShape2D_3b0ty")
-
-[node name="DEBUG-ITEM" type="Button" parent="MapController"]
-offset_left = 144.0
-offset_top = -218.0
-offset_right = 224.0
-offset_bottom = -194.0
-text = "SPAWN ITEM"
-script = ExtResource("20_3mcr0")
-
-[node name="Node2D" type="Node2D" parent="MapController/DEBUG-ITEM"]
-position = Vector2(16.565, 28.445)
 
 [node name="LaunchStrengthProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -28.0
@@ -409,11 +397,17 @@ text = "Cost
 "
 label_settings = ExtResource("20_5f4yl")
 
+[node name="TownButton" type="Button" parent="Shop"]
+offset_left = -242.0
+offset_top = -126.0
+offset_right = -201.0
+offset_bottom = -102.0
+text = "TOWN"
+
 [node name="Platform" type="Sprite2D" parent="."]
 position = Vector2(6, -124)
 texture = ExtResource("21_peulu")
 
-[connection signal="pressed" from="MapController/DEBUG-ITEM" to="MapController/DEBUG-ITEM" method="_on_pressed"]
 [connection signal="area_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_area_entered"]
 [connection signal="body_entered" from="Spear/SpearTipArea" to="Spear" method="_on_spear_tip_area_body_entered"]
 [connection signal="timeout" from="Spear/EndgameTimer" to="." method="game_over"]
@@ -421,3 +415,4 @@ texture = ExtResource("21_peulu")
 [connection signal="pressed" from="Shop/Launch/LaunchStrengthButton" to="Shop" method="_on_launch_strength_button_pressed"]
 [connection signal="pressed" from="Shop/Weight/WeightButton" to="Shop" method="_on_weight_button_pressed"]
 [connection signal="pressed" from="Shop/Magic/MagicButton" to="Shop" method="_on_magic_button_pressed"]
+[connection signal="pressed" from="Shop/TownButton" to="." method="_on_town_button_pressed"]

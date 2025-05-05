@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx288na7ta4ga"]
+
+[ext_resource type="Script" uid="uid://u2s1d7qdv620" path="res://UI/Scripts/town.gd" id="1_yqa6j"]
+[ext_resource type="PackedScene" uid="uid://b8q22ncohkny0" path="res://UI/Scenes/DraggableItem.tscn" id="2_ma1lb"]
+[ext_resource type="Texture2D" uid="uid://yawxj0234c15" path="res://UI/Sprites/InventorySlots.png" id="3_mb5so"]
+[ext_resource type="Texture2D" uid="uid://dhwkps8qdk1js" path="res://UI/Sprites/TownBackground.png" id="4_4bjfe"]
+[ext_resource type="Texture2D" uid="uid://dy6v3mibxnuvj" path="res://UI/Sprites/Anvil.png" id="5_3671y"]
+[ext_resource type="Texture2D" uid="uid://b48r56xc1n82y" path="res://UI/Sprites/Hammer.png" id="6_sp4vr"]
+[ext_resource type="Texture2D" uid="uid://b8ymjxvwu511f" path="res://UI/Sprites/AnvilCraftingItemSlots.png" id="7_4bjfe"]
+[ext_resource type="Texture2D" uid="uid://bjrovl47sn78l" path="res://UI/Sprites/ShopTable.png" id="8_sp4vr"]
+[ext_resource type="Texture2D" uid="uid://4wddww3wcd4d" path="res://Main/Sprites/GoldCoin.png" id="9_t2vdw"]
+
+[node name="Town" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqa6j")
+DraggableItemScn = ExtResource("2_ma1lb")
+
+[node name="TmpInventoryLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 201.0
+offset_right = 800.0
+offset_bottom = 523.0
+
+[node name="GameButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1049.0
+offset_top = 369.0
+offset_right = 1145.0
+offset_bottom = 415.0
+text = "PLAY"
+
+[node name="InventoryGrid" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 680.0
+offset_top = 450.0
+offset_right = 965.0
+offset_bottom = 563.0
+columns = 5
+
+[node name="InventorySlots" type="Sprite2D" parent="InventoryGrid"]
+z_index = -1
+position = Vector2(141.71, 55)
+texture = ExtResource("3_mb5so")
+
+[node name="Town-mockup" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(572, 326)
+texture = ExtResource("4_4bjfe")
+metadata/_edit_lock_ = true
+
+[node name="Crafting" type="Node2D" parent="."]
+
+[node name="Anvil" type="Sprite2D" parent="Crafting"]
+position = Vector2(132, 584)
+texture = ExtResource("5_3671y")
+
+[node name="Hammer" type="Sprite2D" parent="Crafting"]
+position = Vector2(288, 569)
+texture = ExtResource("6_sp4vr")
+
+[node name="CraftButton" type="Button" parent="Crafting"]
+offset_left = 256.0
+offset_top = 445.0
+offset_right = 366.0
+offset_bottom = 508.0
+text = "Craft"
+
+[node name="AnvilGrid" type="GridContainer" parent="Crafting"]
+offset_left = 61.0
+offset_top = 446.0
+offset_right = 232.0
+offset_bottom = 504.0
+columns = 3
+
+[node name="AnvilCraftingItemSlots" type="Sprite2D" parent="Crafting/AnvilGrid"]
+z_index = -1
+position = Vector2(85, 29)
+texture = ExtResource("7_4bjfe")
+metadata/_edit_lock_ = true
+
+[node name="Shop" type="Node2D" parent="."]
+
+[node name="ShopGrid" type="GridContainer" parent="Shop"]
+offset_left = 687.0
+offset_top = 207.0
+offset_right = 970.0
+offset_bottom = 267.0
+columns = 5
+
+[node name="ShopTable" type="Sprite2D" parent="Shop/ShopGrid"]
+z_index = -1
+position = Vector2(141, 39)
+texture = ExtResource("8_sp4vr")
+metadata/_edit_lock_ = true
+
+[node name="SellButton" type="Button" parent="Shop"]
+offset_left = 686.0
+offset_top = 145.0
+offset_right = 779.0
+offset_bottom = 192.0
+text = "Sell"
+
+[node name="GoldCoin" type="Sprite2D" parent="Shop"]
+position = Vector2(805, 169)
+texture = ExtResource("9_t2vdw")
+
+[node name="ShopLabel" type="Label" parent="Shop"]
+offset_left = 827.0
+offset_top = 155.0
+offset_right = 912.0
+offset_bottom = 188.0
+
+[connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
+[connection signal="pressed" from="Crafting/CraftButton" to="." method="_on_craft_button_pressed"]
+[connection signal="child_entered_tree" from="Shop/ShopGrid" to="." method="_on_shop_grid_child_entered_tree"]
+[connection signal="child_exiting_tree" from="Shop/ShopGrid" to="." method="_on_shop_grid_child_exiting_tree"]
+[connection signal="pressed" from="Shop/SellButton" to="." method="_on_sell_button_pressed"]

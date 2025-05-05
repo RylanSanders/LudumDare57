@@ -27,11 +27,16 @@ var current_gold := 0
 var show_objs_timer :=0.0
 var SHOW_OBJS_REFRESH_RATE = 2
 
+const INVENTORY_SAVE_FILE_PATH := "user://inventory.json"
+
 var last_pause_menu: PopupMenu
+
+var items_dict: Dictionary = {}
 
 
 
 func game_over():
+	save_inventory()
 	get_tree().paused=true
 	var new_death_menu :CanvasLayer = death_menu.instantiate()
 	record_high_score()
@@ -59,6 +64,7 @@ func record_high_score() -> void:
 func _ready() -> void:
 	get_saved_high_score()
 	get_saved_gold()
+	load_inventory()
 	if not show_num_objs:
 		num_objs_label.queue_free()
 
@@ -128,6 +134,30 @@ func add_gold(num: int):
 	if gold_label != null:
 		gold_label.text = str(current_gold)
 
+func add_item(type: item_factory.ITEM_TYPE):
+	if items_dict.get(type) == null:
+		items_dict[type] = 1
+	else:
+		items_dict[type] += 1
+
 func remove_gold(num:int):
 	current_gold -= num
 	gold_label.text = str(current_gold)
+
+func save_inventory():
+	var file := FileAccess.open(INVENTORY_SAVE_FILE_PATH, FileAccess.WRITE)
+	var inventory_string = JSON.stringify(items_dict)
+	file.store_string(inventory_string)
+
+func load_inventory():
+	var file := FileAccess.open(INVENTORY_SAVE_FILE_PATH, FileAccess.READ)
+	if file != null:
+		var parsedText = JSON.parse_string(file.get_as_text())
+		if parsedText !=null:
+			for k in parsedText.keys():
+				items_dict[k as item_factory.ITEM_TYPE] = int(parsedText[k])
+			
+
+
+func _on_town_button_pressed() -> void:
+	get_tree().change_scene_to_file("uid://dx288na7ta4ga")
