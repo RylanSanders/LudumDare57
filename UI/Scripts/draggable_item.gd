@@ -13,6 +13,7 @@ func set_info(type: item_factory.ITEM_TYPE, quantity:int):
 	ItemSprite.texture = ItemFactory.get_item_image(type)
 	QuantityLabel.text = str(quantity)
 	self.quantity = quantity
+	self.itemType = type
 	
 
 func _input(event: InputEvent) -> void:

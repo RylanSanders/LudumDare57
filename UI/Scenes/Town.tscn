@@ -113,10 +113,21 @@ position = Vector2(805, 169)
 texture = ExtResource("9_t2vdw")
 
 [node name="ShopLabel" type="Label" parent="Shop"]
-offset_left = 827.0
-offset_top = 155.0
-offset_right = 912.0
-offset_bottom = 188.0
+offset_left = 823.0
+offset_top = 147.0
+offset_right = 908.0
+offset_bottom = 198.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+
+[node name="GoldLabel" type="Label" parent="Shop"]
+offset_left = 694.0
+offset_top = 78.0
+offset_right = 775.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 50
+text = "Test"
 
 [connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="Crafting/CraftButton" to="." method="_on_craft_button_pressed"]
