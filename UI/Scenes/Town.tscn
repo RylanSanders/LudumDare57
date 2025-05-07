@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx288na7ta4ga"]
+[gd_scene load_steps=11 format=3 uid="uid://dx288na7ta4ga"]
 
 [ext_resource type="Script" uid="uid://u2s1d7qdv620" path="res://UI/Scripts/town.gd" id="1_yqa6j"]
 [ext_resource type="PackedScene" uid="uid://b8q22ncohkny0" path="res://UI/Scenes/DraggableItem.tscn" id="2_ma1lb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ymjxvwu511f" path="res://UI/Sprites/AnvilCraftingItemSlots.png" id="7_4bjfe"]
 [ext_resource type="Texture2D" uid="uid://bjrovl47sn78l" path="res://UI/Sprites/ShopTable.png" id="8_sp4vr"]
 [ext_resource type="Texture2D" uid="uid://4wddww3wcd4d" path="res://Main/Sprites/GoldCoin.png" id="9_t2vdw"]
+[ext_resource type="Texture2D" uid="uid://b8aa52yxgcusb" path="res://UI/Sprites/Bank.png" id="10_t2vdw"]
 
 [node name="Town" type="Control"]
 texture_filter = 1
@@ -128,6 +129,14 @@ offset_right = 775.0
 offset_bottom = 129.0
 theme_override_font_sizes/font_size = 50
 text = "Test"
+
+[node name="Bank" type="Sprite2D" parent="."]
+position = Vector2(231, 80)
+texture = ExtResource("10_t2vdw")
+
+[node name="GoldCoin" type="Sprite2D" parent="Bank"]
+position = Vector2(-91, 117)
+texture = ExtResource("9_t2vdw")
 
 [connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="Crafting/CraftButton" to="." method="_on_craft_button_pressed"]
