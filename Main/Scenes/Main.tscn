@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c6kt75durlr23"]
+[gd_scene load_steps=40 format=4 uid="uid://c6kt75durlr23"]
 
 [ext_resource type="Script" uid="uid://busqhvcl724xh" path="res://Main/Scripts/game_controller.gd" id="1_is8yi"]
 [ext_resource type="PackedScene" uid="uid://0m04bnj6k8lb" path="res://UI/Scenes/DeathMenu.tscn" id="2_87gcw"]
@@ -16,8 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://vkx6723msxl7" path="res://Main/Sprites/LeftEye.png" id="13_ribh5"]
 [ext_resource type="Texture2D" uid="uid://cq4ovv7x75ji3" path="res://Main/Sprites/RightEye.png" id="14_fx2vg"]
 [ext_resource type="Texture2D" uid="uid://vnvgxqxup525" path="res://UI/saveGear.png" id="15_kf8rr"]
+[ext_resource type="Texture2D" uid="uid://d0rvdrr6dcg1o" path="res://Main/Sprites/SpearTarget.png" id="16_3mcr0"]
 [ext_resource type="Texture2D" uid="uid://4wddww3wcd4d" path="res://Main/Sprites/GoldCoin.png" id="16_jvmpf"]
 [ext_resource type="Script" uid="uid://22tdiqkixu0t" path="res://Main/Scripts/hud.gd" id="16_st7so"]
+[ext_resource type="Script" uid="uid://doboh4kvd5o8l" path="res://Main/Scenes/target_sprite.gd" id="17_l1cue"]
 [ext_resource type="Texture2D" uid="uid://plnls4vykuwd" path="res://Main/Sprites/knight.png" id="17_y7ssf"]
 [ext_resource type="Script" uid="uid://drp248qd7btqs" path="res://Main/Scripts/knight_arm.gd" id="18_m4t7n"]
 [ext_resource type="Script" uid="uid://dce4uhpowhrek" path="res://Main/Scripts/shop.gd" id="19_yb7y2"]
@@ -197,6 +199,13 @@ texture = ExtResource("14_fx2vg")
 [node name="EndgameTimer" type="Timer" parent="Spear"]
 wait_time = 2.0
 
+[node name="TargetParent" type="Node2D" parent="Spear"]
+
+[node name="Target" type="Sprite2D" parent="Spear/TargetParent"]
+position = Vector2(-1, 34)
+texture = ExtResource("16_3mcr0")
+script = ExtResource("17_l1cue")
+
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("16_st7so")
@@ -247,17 +256,17 @@ offset_bottom = 46.0
 theme_override_font_sizes/font_size = 30
 
 [node name="NumObjectsLabel" type="Label" parent="HUD"]
-offset_left = 159.0
-offset_top = 6.0
-offset_right = 401.0
-offset_bottom = 57.0
+offset_left = 213.0
+offset_top = 8.0
+offset_right = 455.0
+offset_bottom = 59.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "Num Objects"
 
 [node name="Chest" type="Sprite2D" parent="HUD"]
-position = Vector2(119, 31)
+position = Vector2(168.715, 31)
 texture = ExtResource("23_x4eni")
 
 [node name="Area2D" type="Area2D" parent="HUD/Chest"]

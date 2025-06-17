@@ -123,10 +123,10 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 
 [node name="GoldLabel" type="Label" parent="Shop"]
-offset_left = 694.0
-offset_top = 78.0
-offset_right = 775.0
-offset_bottom = 129.0
+offset_left = 163.0
+offset_top = 176.0
+offset_right = 249.0
+offset_bottom = 227.0
 theme_override_font_sizes/font_size = 50
 text = "Test"
 

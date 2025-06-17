@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmx60rbdenwyp"]
+[gd_scene load_steps=11 format=3 uid="uid://dmx60rbdenwyp"]
 
 [ext_resource type="Script" uid="uid://c1b3hvjm0y1or" path="res://Obstacles/Scripts/fish.gd" id="1_gdvse"]
 [ext_resource type="Texture2D" uid="uid://m7mnexj2wdya" path="res://Obstacles/Sprites/GoodFish3.png" id="2_gdvse"]
@@ -44,6 +44,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdvse"]
+size = Vector2(5, 8.5)
+
 [node name="Fish" type="Area2D"]
 script = ExtResource("1_gdvse")
 SPEED = 150
@@ -67,5 +70,11 @@ metadata/_edit_lock_ = true
 [node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_rhc1h")]
 nbr_of_shards = 3
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_gdvse")
+
 [connection signal="area_entered" from="." to="." method="_on_obstacle_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

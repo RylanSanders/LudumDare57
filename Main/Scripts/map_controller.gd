@@ -31,8 +31,9 @@ func _process(delta: float) -> void:
 func generate_map_section():
 	
 	var d:Node2D = map_section_1.instantiate()
-	d.setup(num_maps_generated, seed)
+	
 	d.position.y = newMapPosition
 	newMapPosition += MAP_SECTION_HEIGHT
 	add_child(d)
+	d.setup(num_maps_generated, seed)
 	num_maps_generated+=1

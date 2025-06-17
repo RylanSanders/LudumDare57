@@ -19,6 +19,10 @@ var MAX_SMALL_FISH :=10
 @export var plank_scn:PackedScene
 @export var seaweed_scn:PackedScene
 @export var rock_scn:PackedScene
+@export var jellyfish_scn: PackedScene
+@export var frog_scn: PackedScene
+@export var merman_scn: PackedScene
+
 
 @export var rock_x_left: int = 0
 @export var rock_x_right: int = 0
@@ -26,12 +30,17 @@ var MAX_SMALL_FISH :=10
 @onready var SpawnOffset:Node2D = get_node("SpawnOffset")
 @onready var Map: TileMapLayer = get_node("TileMapLayer")
 
+@export var obstalces_spawn_settings: Array[obstacle_spawn_settings] = []
+
 func _ready() -> void:
-	spawn_walls()
+	pass
 
 func setup(passed_in_starting_y_val:int, passed_seed:float) -> void:
 	starting_y_val = passed_in_starting_y_val * NUM_ROWS
 	#seed = passed_seed
+	if not Map == null:
+		spawn_wallsV2()
+	print(starting_y_val)
 
 var STARTING_RIGHT_GRID_POS := Vector2(8,-2)
 var STARTING_LEFT_GRID_POS := Vector2(-10,-2)
@@ -41,6 +50,34 @@ var WALL_IN_GENERATION = 10
 var starting_y_val :=0
 var seed :=0
 var LEFT_GEN_OFFSET = 334.2543
+
+#HERE - TRY TO GET THE REAL HEIGHT OF WHHERE YOU ARE PLACING
+func spawn_wallsV2():
+	for i in range(NUM_ROWS):
+		var y_val = STARTING_RIGHT_GRID_POS.y + i
+		
+		#Generate Right walls
+		var right_wall_pos_x := STARTING_RIGHT_GRID_POS.x + calculate_wall_offset(y_val + STARTING_RIGHT_GRID_POS.y + starting_y_val)
+		for r in range(WALL_IN_GENERATION):
+			var map_pos = Vector2(right_wall_pos_x + r, y_val)
+			Map.set_cell(map_pos, ATLAS_INDEX, WALL_INDEX)
+		#Generate Left Walls
+		var left_wall_pos_x := STARTING_LEFT_GRID_POS.x + calculate_wall_offset(y_val + STARTING_LEFT_GRID_POS.y + starting_y_val + LEFT_GEN_OFFSET)
+		for r in range(WALL_IN_GENERATION):
+			var wall_position = Vector2( left_wall_pos_x - r, y_val)
+			Map.set_cell(wall_position, ATLAS_INDEX, WALL_INDEX)
+		
+		var depth_level = starting_y_val + i
+		for obstacle: obstacle_spawn_settings in obstalces_spawn_settings:
+			if depth_level>obstacle.min_depth_to_spawn and depth_level<obstacle.max_depth_to_spawn:
+				var num_cols = right_wall_pos_x-left_wall_pos_x
+				for possible_x in range(left_wall_pos_x+1+11, right_wall_pos_x+11):
+					if randf()<obstacle.spawn_prob/num_cols:
+						var d:Node2D = obstacle.obstacle_scn.instantiate()
+						d.position.y = i * ROW_HEIGHT + SpawnOffset.position.y
+						d.position.x = (possible_x+1) *COL_WIDTH + + SpawnOffset.position.x
+						add_child(d)
+
 func spawn_walls():
 	for i in range(NUM_ROWS):
 		var y_val = STARTING_RIGHT_GRID_POS.y + i
