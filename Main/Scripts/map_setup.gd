@@ -30,6 +30,8 @@ var MAX_SMALL_FISH :=10
 @onready var SpawnOffset:Node2D = get_node("SpawnOffset")
 @onready var Map: TileMapLayer = get_node("TileMapLayer")
 
+var test_spawn = false
+
 @export var obstalces_spawn_settings: Array[obstacle_spawn_settings] = []
 
 func _ready() -> void:
@@ -42,8 +44,8 @@ func setup(passed_in_starting_y_val:int, passed_seed:float) -> void:
 		spawn_wallsV2()
 	print(starting_y_val)
 
-var STARTING_RIGHT_GRID_POS := Vector2(8,-2)
-var STARTING_LEFT_GRID_POS := Vector2(-10,-2)
+var STARTING_RIGHT_GRID_POS := Vector2(15,-2)
+var STARTING_LEFT_GRID_POS := Vector2(-15,-2)
 var ATLAS_INDEX := 0
 var WALL_INDEX :=Vector2(1,0)
 var WALL_IN_GENERATION = 10
@@ -72,23 +74,23 @@ func spawn_wallsV2():
 			if depth_level>obstacle.min_depth_to_spawn and depth_level<obstacle.max_depth_to_spawn:
 				if not obstacle.spawn_on_edges:
 					var num_cols = right_wall_pos_x-left_wall_pos_x
-					for possible_x in range(left_wall_pos_x+1+11, right_wall_pos_x+11):
-						if randf()<obstacle.spawn_prob/num_cols:
+					for possible_x in range(left_wall_pos_x+1, right_wall_pos_x):
+						if randf()<obstacle.spawn_prob/num_cols or test_spawn:
 							var d:Node2D = obstacle.obstacle_scn.instantiate()
-							d.position.y = i * ROW_HEIGHT + SpawnOffset.position.y
-							d.position.x = (possible_x+1) *COL_WIDTH + + SpawnOffset.position.x
+							d.position.y = (i-1) * ROW_HEIGHT + SpawnOffset.position.y
+							d.position.x = (possible_x) *COL_WIDTH + + SpawnOffset.position.x
 							add_child(d)
 				else:
 					if randf()<obstacle.spawn_prob/2:
 						var d:Node2D = obstacle.obstacle_scn.instantiate()
-						d.position.y = i * ROW_HEIGHT + SpawnOffset.position.y
-						d.position.x = (right_wall_pos_x+9) * COL_WIDTH + SpawnOffset.position.x
+						d.position.y = (i-2) * ROW_HEIGHT + SpawnOffset.position.y
+						d.position.x = (right_wall_pos_x-1) * COL_WIDTH + SpawnOffset.position.x
 						d.find_child("Sprite2D").flip_h = true
 						add_child(d)
 					if randf()<obstacle.spawn_prob/2:
 						var d:Node2D = obstacle.obstacle_scn.instantiate()
-						d.position.y = i * ROW_HEIGHT + SpawnOffset.position.y
-						d.position.x = (left_wall_pos_x+11) * COL_WIDTH + SpawnOffset.position.x
+						d.position.y = (i-2) * ROW_HEIGHT + SpawnOffset.position.y
+						d.position.x = (left_wall_pos_x+1) * COL_WIDTH + SpawnOffset.position.x
 						add_child(d)
 
 func spawn_walls():

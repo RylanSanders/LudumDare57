@@ -94,6 +94,7 @@ _data = {
 }
 
 [node name="JellyFishBody" type="RigidBody2D"]
+position = Vector2(21, 28)
 mass = 0.001
 gravity_scale = 0.15
 linear_damp = 5.0
@@ -129,5 +130,6 @@ libraries = {
 autoplay = "main"
 
 [node name="OrbSpawn" type="Node2D" parent="Jellyfish"]
+position = Vector2(21, 28)
 
 [connection signal="area_entered" from="Jellyfish" to="Jellyfish" method="_on_obstacle_entered"]

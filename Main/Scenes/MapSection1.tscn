@@ -135,4 +135,3 @@ tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAA
 tile_set = SubResource("TileSet_1o4wp")
 
 [node name="SpawnOffset" type="Node2D" parent="."]
-position = Vector2(-304, -64)

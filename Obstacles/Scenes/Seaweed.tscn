@@ -8,16 +8,18 @@
 size = Vector2(27, 27)
 
 [node name="Seaweed" type="Area2D"]
+position = Vector2(-1, 33)
 script = ExtResource("1_8i82p")
 durability = 20.0
 item_type = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1.5)
+position = Vector2(15, -16)
 shape = SubResource("RectangleShape2D_xhlqg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(17, -17)
 texture = ExtResource("2_fk0s8")
 
 [node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_fk0s8")]

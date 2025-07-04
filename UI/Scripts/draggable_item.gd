@@ -1,22 +1,33 @@
 extends Panel
 
+class_name DraggableItem
+
 @onready var ItemSprite:Sprite2D = get_node("Sprite2D")
 @onready var QuantityLabel:Label = get_node("QuantityLabel")
+@onready var ConsumedLabel:Label = get_node("ConsumedLabel")
 
 var itemType: item_factory.ITEM_TYPE = item_factory.ITEM_TYPE.UNDEFINED
 var quantity := 0
 
 var is_mouse_over:bool = false
 var is_dragging:bool = false
+var is_preview:bool = false
 
-func set_info(type: item_factory.ITEM_TYPE, quantity:int):
+func set_info(type: item_factory.ITEM_TYPE, quantity:int, is_preview:bool=false):
 	ItemSprite.texture = ItemFactory.get_item_image(type)
 	QuantityLabel.text = str(quantity)
 	self.quantity = quantity
 	self.itemType = type
+	self.is_preview = is_preview
+	if is_preview:
+		ItemSprite.modulate.r = 1.5
+		ItemSprite.modulate.g = 1.5
+		ItemSprite.modulate.b = 1.5
 	
 
 func _input(event: InputEvent) -> void:
+	if is_preview:
+		return
 	if is_mouse_over and event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		is_dragging = true
 	if event is InputEventMouseMotion and is_dragging:
@@ -59,3 +70,8 @@ func _on_mouse_exited() -> void:
 
 func get_quantity() -> int:
 	return quantity
+
+func set_consumed(num: int):
+	ConsumedLabel.text = str(num)
+	if num == 0:
+		ConsumedLabel.text = ""

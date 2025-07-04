@@ -48,6 +48,7 @@ animations = [{
 size = Vector2(5, 8.5)
 
 [node name="Fish" type="Area2D"]
+position = Vector2(8, 7)
 script = ExtResource("1_gdvse")
 SPEED = 150
 VERTICAL_SPEED_MULTIPLIER = 2.0
@@ -68,6 +69,7 @@ frame_progress = 0.842024
 metadata/_edit_lock_ = true
 
 [node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_rhc1h")]
+position = Vector2(8, 7)
 nbr_of_shards = 3
 
 [node name="Area2D" type="Area2D" parent="."]

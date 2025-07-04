@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2sid3rnxmlte"]
+
+[ext_resource type="Texture2D" uid="uid://dy6v3mibxnuvj" path="res://UI/Sprites/Anvil.png" id="1_jqxrd"]
+[ext_resource type="Script" uid="uid://cma57ri1bbbli" path="res://UI/Scenes/crafting_section.gd" id="1_vihni"]
+[ext_resource type="Texture2D" uid="uid://b48r56xc1n82y" path="res://UI/Sprites/Hammer.png" id="2_vihni"]
+[ext_resource type="PackedScene" uid="uid://b8q22ncohkny0" path="res://UI/Scenes/DraggableItem.tscn" id="2_xerht"]
+[ext_resource type="Texture2D" uid="uid://b8ymjxvwu511f" path="res://UI/Sprites/AnvilCraftingItemSlots.png" id="3_xerht"]
+[ext_resource type="Texture2D" uid="uid://codgaew0m8nkh" path="res://UI/Sprites/CraftedItemSlot.png" id="4_wcq56"]
+
+[node name="Crafting" type="Node2D"]
+script = ExtResource("1_vihni")
+DraggableItemScn = ExtResource("2_xerht")
+
+[node name="Anvil" type="Sprite2D" parent="."]
+position = Vector2(132, 584)
+texture = ExtResource("1_jqxrd")
+
+[node name="Hammer" type="Sprite2D" parent="."]
+position = Vector2(288, 569)
+texture = ExtResource("2_vihni")
+
+[node name="CraftButton" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 445.0
+offset_right = 366.0
+offset_bottom = 508.0
+text = "Craft"
+
+[node name="AnvilGrid" type="GridContainer" parent="."]
+offset_left = 60.0
+offset_top = 444.0
+offset_right = 231.0
+offset_bottom = 502.0
+columns = 3
+
+[node name="AnvilCraftingItemSlots" type="Sprite2D" parent="AnvilGrid"]
+z_index = -1
+position = Vector2(85, 29)
+texture = ExtResource("3_xerht")
+metadata/_edit_lock_ = true
+
+[node name="CraftAllButton" type="Button" parent="."]
+offset_left = 371.0
+offset_top = 445.0
+offset_right = 440.0
+offset_bottom = 508.0
+text = "Craft All
+"
+
+[node name="CreatedItemGrid" type="GridContainer" parent="."]
+offset_left = 117.0
+offset_top = 364.0
+offset_right = 174.0
+offset_bottom = 422.0
+
+[node name="CraftingItemSlots" type="Sprite2D" parent="CreatedItemGrid"]
+z_index = -1
+position = Vector2(29.005, 29.84)
+texture = ExtResource("4_wcq56")
+metadata/_edit_lock_ = true
+
+[connection signal="child_entered_tree" from="AnvilGrid" to="." method="_on_anvil_grid_child_entered_tree"]
+[connection signal="child_exiting_tree" from="AnvilGrid" to="." method="_on_anvil_grid_child_exiting_tree"]
