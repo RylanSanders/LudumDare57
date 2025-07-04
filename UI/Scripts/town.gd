@@ -1,5 +1,7 @@
 extends Control
 
+class_name town
+
 @onready var inventoryString: Label = get_node("TmpInventoryLabel")
 @onready var InventoryGrid:GridContainer = get_node("InventoryGrid")
 @onready var ShopLabel: Label = get_node("Shop/ShopLabel")

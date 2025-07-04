@@ -8,21 +8,21 @@ class_name DraggableItem
 
 var itemType: item_factory.ITEM_TYPE = item_factory.ITEM_TYPE.UNDEFINED
 var quantity := 0
+var to_consume_quantity :=0
 
 var is_mouse_over:bool = false
 var is_dragging:bool = false
 var is_preview:bool = false
 
 func set_info(type: item_factory.ITEM_TYPE, quantity:int, is_preview:bool=false):
+	if ItemSprite == null:
+		return
 	ItemSprite.texture = ItemFactory.get_item_image(type)
 	QuantityLabel.text = str(quantity)
 	self.quantity = quantity
 	self.itemType = type
-	self.is_preview = is_preview
-	if is_preview:
-		ItemSprite.modulate.r = 1.5
-		ItemSprite.modulate.g = 1.5
-		ItemSprite.modulate.b = 1.5
+	set_preview(is_preview)
+	
 	
 
 func _input(event: InputEvent) -> void:
@@ -71,7 +71,23 @@ func _on_mouse_exited() -> void:
 func get_quantity() -> int:
 	return quantity
 
+func set_quantity(new_q: int) -> void:
+	quantity = new_q
+	QuantityLabel.text = str(quantity)
+
 func set_consumed(num: int):
 	ConsumedLabel.text = str(num)
+	to_consume_quantity = num
 	if num == 0:
 		ConsumedLabel.text = ""
+
+func set_preview(to_preview: bool):
+	is_preview = to_preview
+	if is_preview:
+		ItemSprite.modulate.r = 0.4
+		ItemSprite.modulate.g = 0.4
+		ItemSprite.modulate.b = 0.4
+	else:
+		ItemSprite.modulate.r = 1
+		ItemSprite.modulate.g = 1
+		ItemSprite.modulate.b = 1

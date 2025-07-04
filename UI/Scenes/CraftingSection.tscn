@@ -40,6 +40,7 @@ texture = ExtResource("3_xerht")
 metadata/_edit_lock_ = true
 
 [node name="CraftAllButton" type="Button" parent="."]
+visible = false
 offset_left = 371.0
 offset_top = 445.0
 offset_right = 440.0
@@ -59,5 +60,6 @@ position = Vector2(29.005, 29.84)
 texture = ExtResource("4_wcq56")
 metadata/_edit_lock_ = true
 
+[connection signal="button_down" from="CraftButton" to="." method="_on_craft_button_button_down"]
 [connection signal="child_entered_tree" from="AnvilGrid" to="." method="_on_anvil_grid_child_entered_tree"]
 [connection signal="child_exiting_tree" from="AnvilGrid" to="." method="_on_anvil_grid_child_exiting_tree"]
