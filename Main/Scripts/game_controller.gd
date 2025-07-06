@@ -135,7 +135,7 @@ func add_gold(num: int):
 	if gold_label != null:
 		gold_label.text = str(current_gold)
 
-func add_item(type: item_factory.ITEM_TYPE):
+func add_item(type: String):
 	if items_dict.get(type) == null:
 		items_dict[type] = 1
 	else:
@@ -156,7 +156,7 @@ func load_inventory():
 		var parsedText = JSON.parse_string(file.get_as_text())
 		if parsedText !=null:
 			for k in parsedText.keys():
-				items_dict[k as item_factory.ITEM_TYPE] = int(parsedText[k])
+				items_dict[k as String] = int(parsedText[k])
 			
 
 

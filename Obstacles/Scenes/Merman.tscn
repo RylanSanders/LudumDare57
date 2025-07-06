@@ -185,7 +185,7 @@ script = ExtResource("1_tt2y3")
 trident = ExtResource("2_q1nkd")
 durability = 200.0
 gold_value = 20
-item_type = 7
+item_type = "MERMAN_TRIDENT"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, -9)

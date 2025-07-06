@@ -1,0 +1,92 @@
+[
+	{
+	"ID":"FISH1",
+	"Image":"Fish1-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"SEAWEED",
+	"Image":"Seaweed-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 1,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"ROCK",
+	"Image":"Rock-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 5,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"WOOD",
+	"Image":"Wood-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 2,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"FISH2",
+	"Image":"Fish2-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"FISH3",
+	"Image":"Fish3-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"FROG_TONGUE",
+	"Image":"FrogTongue-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"JELLYFISH_ORB",
+	"Image":"Jellyfish-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"MERMAN_TRIDENT",
+	"Image":"Merman-Item",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingOutput":1
+	},
+	{
+	"ID":"SMALL_WOOD_FISH",
+	"Image":"SmallWoodFish",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingRecipe": {"FISH3": 1, "WOOD": 1},
+	"CraftingOutput":1
+	},
+	{
+	"ID":"ROCK_SALAD",
+	"Image":"RockSalad",
+	"ToolTip":"Nothing",
+	"GoldValue": 10,
+	"ShopPrice": 20,
+	"CraftingRecipe": {"ROCK": 2, "SEAWEED": 2},
+	"CraftingOutput":1
+	}
+]

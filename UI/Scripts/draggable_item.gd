@@ -6,7 +6,7 @@ class_name DraggableItem
 @onready var QuantityLabel:Label = get_node("QuantityLabel")
 @onready var ConsumedLabel:Label = get_node("ConsumedLabel")
 
-var itemType: item_factory.ITEM_TYPE = item_factory.ITEM_TYPE.UNDEFINED
+var itemType: String = "UNDEFINED"
 var quantity := 0
 var to_consume_quantity :=0
 
@@ -14,7 +14,7 @@ var is_mouse_over:bool = false
 var is_dragging:bool = false
 var is_preview:bool = false
 
-func set_info(type: item_factory.ITEM_TYPE, quantity:int, is_preview:bool=false):
+func set_info(type: String, quantity:int, is_preview:bool=false):
 	if ItemSprite == null:
 		return
 	ItemSprite.texture = ItemFactory.get_item_image(type)
@@ -23,8 +23,6 @@ func set_info(type: item_factory.ITEM_TYPE, quantity:int, is_preview:bool=false)
 	self.itemType = type
 	set_preview(is_preview)
 
-func get_item_id():
-	return ItemFactory.IDToTypeID[itemType]
 	
 
 func _input(event: InputEvent) -> void:

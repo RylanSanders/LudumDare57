@@ -65,7 +65,7 @@ size = Vector2(7, 10)
 position = Vector2(14, 6)
 script = ExtResource("1_5uvof")
 gold_value = 2
-item_type = 1
+item_type = "FISH1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

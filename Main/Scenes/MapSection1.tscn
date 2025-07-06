@@ -16,10 +16,13 @@
 [sub_resource type="Resource" id="Resource_4dbk4"]
 script = ExtResource("11_j5r8y")
 min_depth_to_spawn = 0
-max_depth_to_spawn = 200
-spawn_prob = 0.1
+max_depth_to_spawn = 250
+spawn_prob = 0.2
 obstacle_scn = ExtResource("4_2n71d")
 spawn_on_edges = false
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_8s12a"]
@@ -29,6 +32,9 @@ max_depth_to_spawn = 500
 spawn_prob = 0.1
 obstacle_scn = ExtResource("3_xkiw8")
 spawn_on_edges = false
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_p65th"]
@@ -38,6 +44,9 @@ max_depth_to_spawn = 3000
 spawn_prob = 0.1
 obstacle_scn = ExtResource("2_d87u3")
 spawn_on_edges = false
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_oydy4"]
@@ -47,6 +56,9 @@ max_depth_to_spawn = 4000
 spawn_prob = 0.3
 obstacle_scn = ExtResource("5_pgp00")
 spawn_on_edges = true
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_4j0wl"]
@@ -56,15 +68,21 @@ max_depth_to_spawn = 5000
 spawn_prob = 0.05
 obstacle_scn = ExtResource("3_2n71d")
 spawn_on_edges = false
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_lfsmd"]
 script = ExtResource("11_j5r8y")
-min_depth_to_spawn = 350
+min_depth_to_spawn = 200
 max_depth_to_spawn = 5000
 spawn_prob = 0.3
 obstacle_scn = ExtResource("4_pgp00")
 spawn_on_edges = false
+spawn_swarm = true
+swarm_min = 3
+swarm_max = 10
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_c7hav"]
@@ -74,6 +92,9 @@ max_depth_to_spawn = 5000
 spawn_prob = 0.1
 obstacle_scn = ExtResource("9_j5r8y")
 spawn_on_edges = false
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_f0vnu"]
@@ -83,6 +104,9 @@ max_depth_to_spawn = 5000
 spawn_prob = 0.06
 obstacle_scn = ExtResource("8_hufbg")
 spawn_on_edges = false
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="Resource" id="Resource_k0xd6"]
@@ -92,6 +116,9 @@ max_depth_to_spawn = 5000
 spawn_prob = 0.3
 obstacle_scn = ExtResource("10_4dbk4")
 spawn_on_edges = false
+spawn_swarm = false
+swarm_min = 1
+swarm_max = 4
 metadata/_custom_type_script = "uid://m62op6wlblxq"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mwmuu"]

@@ -26,7 +26,7 @@ func load_inventory():
 		var parsedText = JSON.parse_string(file.get_as_text())
 		if parsedText !=null:
 			for k in parsedText.keys():
-				item_dictionary[k as item_factory.ITEM_TYPE] = int(parsedText[k])
+				item_dictionary[k as String] = int(parsedText[k])
 
 func add_draggable_items():
 	for key in item_dictionary.keys():
@@ -90,5 +90,5 @@ func evaluate_shop_items() -> int:
 	var sum:=0
 	for item in ShopGrid.get_children():
 		if item.has_method("get_quantity"):
-			sum += item.get_quantity() * ItemFactory.get_item_definition(item.get_item_id()).GoldValue
+			sum += item.get_quantity() * ItemFactory.get_item_definition(item.itemType).GoldValue
 	return sum

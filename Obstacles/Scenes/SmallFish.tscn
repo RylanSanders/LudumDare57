@@ -54,7 +54,7 @@ SPEED = 150
 VERTICAL_SPEED_MULTIPLIER = 2.0
 durability = 5.0
 gold_value = 3
-item_type = 4
+item_type = "FISH3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

@@ -9,7 +9,7 @@ var is_dead :=false
 var death_timer:=0.0
 @export var death_delete_delay:float = 1.0
 
-@export var item_type:item_factory.ITEM_TYPE = item_factory.ITEM_TYPE.UNDEFINED
+@export var item_type:String = "UNDEFINED"
 
 func _process(delta: float) -> void:
 	if is_dead:

@@ -81,6 +81,7 @@ SPEED = 50
 VERTICAL_SPEED_MULTIPLIER = 1.0
 durability = 100.0
 gold_value = 10
+item_type = "FISH2"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 show_behind_parent = true
