@@ -14,7 +14,23 @@ ITEM_TYPE.JELLYFISH: load("res://UI/Sprites/JellyFish-Item.png"),
 ITEM_TYPE.MERMAN: load("res://UI/Sprites/Merman-Item.png"),
 ITEM_TYPE.SEAWEED: load("res://UI/Sprites/Seaweed-Item.png"),
 ITEM_TYPE.ROCK: load("res://UI/Sprites/Rock-Item.png")}
+
+@onready var IDToTypeID = {ITEM_TYPE.UNDEFINED : "UNDEFINED",
+ITEM_TYPE.FISH1: "FISH1",
+ITEM_TYPE.FISH2: "FISH2",
+ITEM_TYPE.WOOD: "WOOD",
+ITEM_TYPE.FISH3: "FISH3",
+ITEM_TYPE.FROG: "FROG",
+ITEM_TYPE.JELLYFISH: "JELLYFISH",
+ITEM_TYPE.MERMAN: "MERMAN",
+ITEM_TYPE.SEAWEED: "SEAWEED",
+ITEM_TYPE.ROCK: "ROCK"}
+
 @onready var ItemScn: PackedScene = preload("res://UI/Scenes/Item.tscn")
+
+const ITEM_TYPE_FILE_PATH := "user://item_types.json"
+var item_types_dict: Dictionary = {}
+var crafting_recipes:Array[crafting_recipe]
 
 const HUD_VAR := "HUD"
 var OFFSET: Vector2 = Vector2(300, 200)
@@ -33,3 +49,36 @@ func create_item(parent: Node2D, itemType: ITEM_TYPE) -> void:
 
 func get_item_image(type: ITEM_TYPE) -> Texture2D:
 	return SpriteDictionary[type]
+
+func _ready() -> void:
+	load_items()
+
+func get_crafting_recipes() -> Array[crafting_recipe]:
+	return crafting_recipes
+
+func get_item_definition(item_type: String) -> item_definition:
+	return item_types_dict[item_type]
+
+func load_items():
+	var file := FileAccess.open(ITEM_TYPE_FILE_PATH, FileAccess.READ)
+	if file != null:
+		var items = file.get_as_text()
+		var parsedText = JSON.parse_string(file.get_as_text())
+		if parsedText !=null:
+			for dict in parsedText:
+				var new_item_type:item_definition = item_definition.new()
+				new_item_type.ID = dict["ID"]
+				new_item_type.ImagePath = dict["Image"]
+				new_item_type.GoldValue = dict["GoldValue"]
+				new_item_type.ShopPrice = dict["ShopPrice"]
+				new_item_type.CraftingOutput = dict["CraftingOutput"]
+				new_item_type.ToolTip = dict["ToolTip"]
+				if dict.keys().has("CraftingRecipe"):
+					var new_recipe:crafting_recipe = crafting_recipe.new()
+					new_recipe.cost = dict["CraftingRecipe"]
+					new_recipe.output = dict["ID"]
+					new_recipe.output_quantity = dict["CraftingOutput"]
+					new_item_type.CraftingRecipe = new_recipe
+				item_types_dict[new_item_type.ID] = new_item_type
+				if new_item_type.CraftingRecipe != null:
+					crafting_recipes.append(new_item_type.CraftingRecipe)

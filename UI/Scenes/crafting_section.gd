@@ -14,10 +14,11 @@ func _ready() -> void:
 	load_crafting_recipes()
 
 func load_crafting_recipes() -> void:
-	var recipe: crafting_recipe = crafting_recipe.new()
-	recipe.cost = {ItemFactory.ITEM_TYPE.WOOD: 2, ItemFactory.ITEM_TYPE.SEAWEED: 1}
-	recipe.output = ItemFactory.ITEM_TYPE.JELLYFISH
-	crafting_recipes.append(recipe)
+	#var recipe: crafting_recipe = crafting_recipe.new()
+	#recipe.cost = {ItemFactory.ITEM_TYPE.WOOD: 2, ItemFactory.ITEM_TYPE.SEAWEED: 1}
+	#recipe.output = ItemFactory.ITEM_TYPE.JELLYFISH
+	#crafting_recipes.append(recipe)
+	crafting_recipes = ItemFactory.crafting_recipes
 
 func _on_anvil_grid_child_entered_tree(node: Node) -> void:
 	if node is DraggableItem:

@@ -65,6 +65,7 @@ func _ready() -> void:
 	get_saved_high_score()
 	get_saved_gold()
 	load_inventory()
+	
 	if not show_num_objs:
 		num_objs_label.queue_free()
 

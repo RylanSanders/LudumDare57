@@ -22,7 +22,9 @@ func set_info(type: item_factory.ITEM_TYPE, quantity:int, is_preview:bool=false)
 	self.quantity = quantity
 	self.itemType = type
 	set_preview(is_preview)
-	
+
+func get_item_id():
+	return ItemFactory.IDToTypeID[itemType]
 	
 
 func _input(event: InputEvent) -> void:

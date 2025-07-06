@@ -90,5 +90,5 @@ func evaluate_shop_items() -> int:
 	var sum:=0
 	for item in ShopGrid.get_children():
 		if item.has_method("get_quantity"):
-			sum += item.get_quantity()
+			sum += item.get_quantity() * ItemFactory.get_item_definition(item.get_item_id()).GoldValue
 	return sum
