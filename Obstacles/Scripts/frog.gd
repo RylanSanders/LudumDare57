@@ -16,15 +16,15 @@ var is_following_tongue := false
 @onready var TongueSpawn:Node2D = $TongueSpawn
 
 
-
 func _process(delta: float) -> void:
-	LeftPupil.look_at(Spear.global_position)
-	LeftPupil.rotate(PI/2)
-	RightPupil.look_at(Spear.global_position)
-	RightPupil.rotate(PI/2)
-	if is_following_tongue:
-		TongueLine.set_point_position(1,to_local(target_point))
-		TongueBulb.global_position = target_point
+	if LeftPupil != null and RightPupil != null and Spear != null:
+		LeftPupil.look_at(Spear.global_position)
+		LeftPupil.rotate(PI/2)
+		RightPupil.look_at(Spear.global_position)
+		RightPupil.rotate(PI/2)
+		if is_following_tongue:
+			TongueLine.set_point_position(1,to_local(target_point))
+			TongueBulb.global_position = target_point
 
 func shoot_tongue() ->void:
 	

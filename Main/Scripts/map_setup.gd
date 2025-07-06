@@ -80,6 +80,14 @@ func spawn_wallsV2():
 							d.position.y = (i-1) * ROW_HEIGHT + SpawnOffset.position.y
 							d.position.x = (possible_x) *COL_WIDTH + + SpawnOffset.position.x
 							add_child(d)
+							if obstacle.spawn_swarm:
+								var num_pack := randi_range(obstacle.swarm_min, obstacle.swarm_max)
+								print(str(num_pack))
+								for num in range(num_pack):
+									var packObs:Node2D = obstacle.obstacle_scn.instantiate()
+									packObs.position.y = (i-1) * ROW_HEIGHT + SpawnOffset.position.y + randi_range(-16,16)
+									packObs.position.x = (possible_x) *COL_WIDTH + + SpawnOffset.position.x + randi_range(-16,16)
+									add_child(packObs)
 				else:
 					if randf()<obstacle.spawn_prob/2:
 						var d:Node2D = obstacle.obstacle_scn.instantiate()
